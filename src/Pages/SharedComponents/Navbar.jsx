@@ -1,11 +1,39 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import useAuthHook from '../../Hooks/useAuthHook';
 
 const Navbar = () => {
 
+    const { user, signOutUser } = useAuthHook();
+
+    const handleSignOut = () => {
+        signOutUser()
+            .then(() => {
+                console.log('Sign out');
+            })
+            .catch(error => {
+                console.log(error.message);
+            })
+    }
+
     const links = <>
-       <li><NavLink to='/'>Home</NavLink></li>
-       <li><NavLink to='/queries'>Queries</NavLink></li>
+        <div className='lg:flex gap-3'>
+            {
+                user ?
+                    <>
+                        <li><NavLink to='/'>Home</NavLink></li>
+                        <li><NavLink to='/queries'>Queries</NavLink></li>
+                        <li><NavLink to='/recommendationsForMe'>Recommendations For Me</NavLink></li>
+                        <li><NavLink to='/myQueries'>MY Queries</NavLink></li>
+                        <li><NavLink to='/myRecommendations'>My Recommendations</NavLink></li>
+                    </>
+                    :
+                    <>
+                        <li><NavLink to='/'>Home</NavLink></li>
+                        <li><NavLink to='/queries'>Queries</NavLink></li>
+                    </>
+            }
+        </div>
     </>
     return (
         <div className="navbar bg-base-100">
@@ -27,7 +55,7 @@ const Navbar = () => {
                     </div>
                     <ul
                         tabIndex={0}
-                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-56 p-2 shadow">
                         {links}
                     </ul>
                 </div>
@@ -39,7 +67,14 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link className="btn btn-success text-white" to='/login'>Login</Link>
+                {
+                    user ? <>
+                        <button onClick={handleSignOut} className='btn btn-error'>Logout</button>
+                    </> : <>
+                        <Link className="btn btn-success text-white" to='/login'>Login</Link>
+                    </>
+                }
+
             </div>
         </div>
     );

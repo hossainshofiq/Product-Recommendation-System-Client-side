@@ -5,6 +5,10 @@ import Home from '../Pages/Home/Home';
 import ErrorPage from '../Pages/SharedComponents/ErrorPage';
 import Login from '../Pages/Login';
 import Register from '../Pages/Register';
+import Queries from '../Pages/Queries';
+import RecommendationsForMe from '../Pages/RecommendationsForMe';
+import MyQueries from '../Pages/MyQueries';
+import MyRecommendations from '../Pages/MyRecommendations';
 
 const router = createBrowserRouter([
     {
@@ -22,6 +26,22 @@ const router = createBrowserRouter([
             {
                 path: '/register',
                 element: <Register></Register>
+            },
+            {
+                path: '/queries',
+                element: <Queries></Queries>
+            },
+            {
+                path: '/recommendationsForMe',
+                element: <RecommendationsForMe></RecommendationsForMe>
+            },
+            {
+                path: '/myQueries',
+                element: <MyQueries></MyQueries>
+            },
+            {
+                path: '/myRecommendations',
+                element: <MyRecommendations></MyRecommendations>
             }
         ]
     },

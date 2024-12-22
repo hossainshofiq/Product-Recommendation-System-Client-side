@@ -2,8 +2,11 @@ import Lottie from 'lottie-react';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import register from '../assets/Lottie/register.json'
+import useAuthHook from '../Hooks/useAuthHook';
 
 const Register = () => {
+
+    const { createUser } = useAuthHook();
 
     const handleRegister = (e) => {
         e.preventDefault();
@@ -14,8 +17,16 @@ const Register = () => {
         const password = form.password.value;
         const photo = form.photo.value;
 
-        const user = {name, email, password, photo}
+        const user = { name, email, password, photo }
         console.log(user);
+        // if have some free time, implement password validation and showPassword functionality
+        createUser(email, password)
+        .then(result => {
+            console.log(result.user);
+        })
+        .catch(error => {
+            console.log(error.message);
+        })
 
     }
     return (
