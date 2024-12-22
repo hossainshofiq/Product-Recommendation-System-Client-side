@@ -4,10 +4,11 @@ import login from '../assets/Lottie/login.json'
 import Lottie from 'lottie-react';
 import GoogleSignIn from './GoogleSignIn';
 import useAuthHook from '../Hooks/useAuthHook';
+import Swal from 'sweetalert2';
 
 const Login = () => {
 
-    const {signInUser} = useAuthHook();
+    const { signInUser } = useAuthHook();
 
     const handleLogin = (e) => {
         e.preventDefault()
@@ -17,12 +18,24 @@ const Login = () => {
         console.log('user:', email, password);
 
         signInUser(email, password)
-        .then(result => {
-            console.log('Signin done:', result.user);
-        })
-        .catch(error => {
-            console.log(error.message);
-        })
+            .then(result => {
+                console.log('Signin done:', result.user);
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Login Successful",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            })
+            .catch(error => {
+                console.log(error.message);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Login Failed',
+                    text: error.message,
+                });
+            })
 
     }
     return (

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import useAuthHook from '../../Hooks/useAuthHook';
+import { Tooltip } from 'react-tooltip';
 
 const Navbar = () => {
 
@@ -63,16 +64,27 @@ const Navbar = () => {
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
-                    {links}
+                {links}
                 </ul>
             </div>
             <div className="navbar-end">
                 {
-                    user ? <>
-                        <button onClick={handleSignOut} className='btn btn-error'>Logout</button>
-                    </> : <>
-                        <Link className="btn btn-success text-white" to='/login'>Login</Link>
-                    </>
+                    user && user?.email ?
+                        <div className='flex items-center gap-3'>
+                            <div>
+                                <img
+                                    data-tooltip-id='my-tooltip'
+                                    data-tooltip-content={user?.displayName}
+                                    className='w-12 h-12 border border-black rounded-full'
+                                    src={user?.photoURL}
+                                    alt="User Avatar" />
+                                <Tooltip id='my-tooltip'></Tooltip>
+                            </div>
+                            <button onClick={handleSignOut} className='btn btn-error'>Logout</button>
+                        </div> :
+                        <div>
+                            <Link className="btn btn-success text-white" to='/login'>Login</Link>
+                        </div>
                 }
 
             </div>

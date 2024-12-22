@@ -9,6 +9,7 @@ import Queries from '../Pages/Queries';
 import RecommendationsForMe from '../Pages/RecommendationsForMe';
 import MyQueries from '../Pages/MyQueries';
 import MyRecommendations from '../Pages/MyRecommendations';
+import PrivateRoute from './PrivateRoute';
 
 const router = createBrowserRouter([
     {
@@ -37,7 +38,9 @@ const router = createBrowserRouter([
             },
             {
                 path: '/myQueries',
-                element: <MyQueries></MyQueries>
+                element: <PrivateRoute>
+                    <MyQueries></MyQueries>
+                </PrivateRoute>
             },
             {
                 path: '/myRecommendations',

@@ -3,10 +3,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import register from '../assets/Lottie/register.json'
 import useAuthHook from '../Hooks/useAuthHook';
+import Swal from 'sweetalert2';
 
 const Register = () => {
 
-    const { createUser } = useAuthHook();
+    const { createUser, setUser, updateUserProfile } = useAuthHook();
 
     const handleRegister = (e) => {
         e.preventDefault();
@@ -19,14 +20,57 @@ const Register = () => {
 
         const user = { name, email, password, photo }
         console.log(user);
-        // if have some free time, implement password validation and showPassword functionality
+
+        // To-do: if have some free time, implement password validation and showPassword functionality
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+        if (!passwordRegex.test(password)) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Weak Password',
+                text: 'Password must be at least 6 characters long and contain both uppercase and lowercase letters.',
+            });
+            return;
+        }
+
+        const userDoc = {
+            displayName: name,
+            photoURL: photo,
+        };
+
         createUser(email, password)
-        .then(result => {
-            console.log(result.user);
-        })
-        .catch(error => {
-            console.log(error.message);
-        })
+            .then(result => {
+                console.log(result.user);
+                const user = result.user;
+                setUser(user);
+
+                updateUserProfile(userDoc)
+                    .then(() => {
+                        Swal.fire({
+                            position: "center",
+                            icon: "success",
+                            title: "Registration Successful",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                    })
+                    //navigate to desired route
+                    .catch((error) => {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            text: error.message,
+                        });
+                    })
+
+            })
+            .catch(error => {
+                console.log(error.message);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Registration Failed',
+                    text: error.message,
+                });
+            })
 
     }
     return (
