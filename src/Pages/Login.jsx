@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import login from '../assets/Lottie/login.json'
 import Lottie from 'lottie-react';
 import GoogleSignIn from './GoogleSignIn';
@@ -9,6 +9,7 @@ import Swal from 'sweetalert2';
 const Login = () => {
 
     const { signInUser } = useAuthHook();
+    const navigate = useNavigate();
 
     const handleLogin = (e) => {
         e.preventDefault()
@@ -27,6 +28,7 @@ const Login = () => {
                     showConfirmButton: false,
                     timer: 1500
                 });
+                navigate('/');
             })
             .catch(error => {
                 console.log(error.message);
@@ -62,12 +64,12 @@ const Login = () => {
                         <div className="form-control mt-6">
                             <button className="btn rounded-md btn-primary">Login</button>
                         </div>
-
+                        <div className='divider'>Or</div>
                         <div>
                             <GoogleSignIn></GoogleSignIn>
                         </div>
 
-                        <p className='text-center mt-5'>New here? <Link className='underline font-bold text-red-600' to='/register'>create an account!</Link></p>
+                        <p className='text-center'>New here? <Link className='underline font-bold text-red-600' to='/register'>create an account!</Link></p>
                     </form>
                 </div>
             </div>

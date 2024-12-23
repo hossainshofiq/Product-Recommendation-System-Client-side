@@ -8,7 +8,6 @@ const MainLayout = () => {
     return (
         <div className='font-jakarta'>
             <Navbar></Navbar>
-            <Slider></Slider>
             <Outlet></Outlet>
             <Footer></Footer>
         </div>

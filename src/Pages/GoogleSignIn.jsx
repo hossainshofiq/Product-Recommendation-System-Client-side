@@ -1,19 +1,22 @@
 import React from 'react';
 import useAuthHook from '../Hooks/useAuthHook';
 import { FaGoogle } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 const GoogleSignIn = () => {
 
-    const {googleSignIn} = useAuthHook();
+    const { googleSignIn } = useAuthHook();
+    const navigate = useNavigate();
 
     const handleGoogleSignIn = () => {
         googleSignIn()
-        .then(result => {
-            console.log(result.user);
-        })
-        .catch(error => {
-            console.log(error.message);
-        })
+            .then(result => {
+                console.log(result.user);
+                navigate('/');
+            })
+            .catch(error => {
+                console.log(error.message);
+            })
     }
     return (
         <div>

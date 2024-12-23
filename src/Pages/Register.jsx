@@ -1,6 +1,6 @@
 import Lottie from 'lottie-react';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import register from '../assets/Lottie/register.json'
 import useAuthHook from '../Hooks/useAuthHook';
 import Swal from 'sweetalert2';
@@ -8,6 +8,7 @@ import Swal from 'sweetalert2';
 const Register = () => {
 
     const { createUser, setUser, updateUserProfile } = useAuthHook();
+    const navigate = useNavigate();
 
     const handleRegister = (e) => {
         e.preventDefault();
@@ -61,7 +62,7 @@ const Register = () => {
                             text: error.message,
                         });
                     })
-
+                    navigate('/');
             })
             .catch(error => {
                 console.log(error.message);
