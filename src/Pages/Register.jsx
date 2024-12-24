@@ -1,9 +1,10 @@
 import Lottie from 'lottie-react';
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { data, Link, useNavigate } from 'react-router-dom';
 import register from '../assets/Lottie/register.json'
 import useAuthHook from '../Hooks/useAuthHook';
 import Swal from 'sweetalert2';
+import axios from 'axios';
 
 const Register = () => {
 
@@ -44,6 +45,25 @@ const Register = () => {
                 const user = result.user;
                 setUser(user);
 
+                const newUser = { name, email };
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(newUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log("User created to db", data);
+                    })
+
+                // axios.post('http://localhost:5000/users', newUser)
+                // .then(res => {
+                //     console.log("User created to db", res.data);
+                //     setUser(res.data)
+                // })
+
                 updateUserProfile(userDoc)
                     .then(() => {
                         Swal.fire({
@@ -62,7 +82,7 @@ const Register = () => {
                             text: error.message,
                         });
                     })
-                    navigate('/');
+                navigate('/');
             })
             .catch(error => {
                 console.log(error.message);

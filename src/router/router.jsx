@@ -11,6 +11,8 @@ import MyRecommendations from '../Pages/MyRecommendations';
 import PrivateRoute from './PrivateRoute';
 import MyQueries from '../Pages/MyQueries/MyQueries';
 import AddQueryForm from '../Pages/MyQueries/AddQueryForm';
+import MyQueryDetails from '../Pages/MyQueryDetails';
+import MyQueryUpdate from './../Pages/MyQueries/MyQueryUpdate';
 
 const router = createBrowserRouter([
     {
@@ -52,6 +54,15 @@ const router = createBrowserRouter([
                 element: <PrivateRoute>
                     <AddQueryForm></AddQueryForm>
                 </PrivateRoute>
+            },
+            {
+                path: '/myQueries/queryDetails/:id',
+                element: <MyQueryDetails></MyQueryDetails>,
+                loader: ({params}) => fetch(`http://localhost:5000/queries/${params.id}`)
+            },
+            {
+                path: '/queryUpdate/:id',
+                element: <MyQueryUpdate></MyQueryUpdate>,
             }
         ]
     },

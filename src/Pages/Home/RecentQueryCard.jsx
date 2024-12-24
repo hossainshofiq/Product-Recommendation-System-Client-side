@@ -7,7 +7,7 @@ const RecentQueryCard = ({ query }) => {
         <div className="card card-compact bg-base-100 border w-full shadow-xl p-5">
             <figure>
                 <img
-                className='w-48'
+                    className='w-48'
                     src={productImageUrl}
                     alt="Product Image" />
             </figure>

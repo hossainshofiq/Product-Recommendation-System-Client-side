@@ -7,14 +7,14 @@ const RecentQueries = () => {
     const [queries, setQueries] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/queries')
-        // fetch('https://product-recommendation-s-d6b6d.web.app/queries')
-        // axios('http://localhost:5000/queries')
-        .then(res => res.json())
-        .then(data => {
-            setQueries(data);
-        })
-    },[])
+        // fetch('http://localhost:5000/queries')
+            // fetch('https://product-recommendation-s-d6b6d.web.app/queries')
+            axios('http://localhost:5000/queries')
+            // .then(res => res.json())
+            .then(data => {
+                setQueries(data.data);
+            })
+    }, [])
 
     return (
         <div className='max-w-7xl mx-auto my-10'>
