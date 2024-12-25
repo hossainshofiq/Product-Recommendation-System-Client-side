@@ -2,12 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
-const MyQueryCard = ({ query }) => {
+const MyQueryCard = ({ query, queries, setQueries }) => {
 
     const { _id } = query
 
     const handleQueryDelete = (_id) => {
-        console.log(_id);
+        // console.log(_id);
 
         Swal.fire({
             title: "Are you sure?",
@@ -27,9 +27,11 @@ const MyQueryCard = ({ query }) => {
                         if (data.deletedCount > 0) {
                             Swal.fire({
                                 title: "Deleted!",
-                                text: "Your Equipment has been deleted.",
+                                text: "Your Query has been deleted.",
                                 icon: "success"
                             });
+                            const remainingQueries = queries.filter(qry => qry._id !== _id)
+                            setQueries(remainingQueries)
                         }
                     })
             }
@@ -51,14 +53,12 @@ const MyQueryCard = ({ query }) => {
                     <Link to={`/myQueries/queryDetails/${_id}`}>
                         <button className="btn btn-primary">View Details</button>
                     </Link>
-                    <Link to={`/queryUpdate/${_id}`}>
+                    <Link to={`/myQueries/queryUpdate/${_id}`}>
                         <button className="btn btn-primary">Update</button>
                     </Link>
 
                     <button onClick={() => handleQueryDelete(_id)} className="btn btn-primary">Delete</button>
 
-                    {/* <button className="btn btn-primary">Update</button>
-                    <button className="btn btn-primary">Delete</button> */}
                 </div>
             </div>
         </div>

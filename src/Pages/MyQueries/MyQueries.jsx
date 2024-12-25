@@ -23,7 +23,7 @@ const MyQueries = () => {
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
                 {
                     queries.length > 0 ?
-                        (queries.map(query => <MyQueryCard key={query._id} query={query}></MyQueryCard>)
+                        (queries.map(query => <MyQueryCard key={query._id} query={query} queries={queries} setQueries={setQueries}></MyQueryCard>)
                         ) : (
                             <div className='text-center'>
                                 <p className="text-xl text-gray-500 my-5">No queries found. Start by adding your first query!</p>

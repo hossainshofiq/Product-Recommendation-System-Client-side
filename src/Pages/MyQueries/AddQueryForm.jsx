@@ -6,7 +6,7 @@ import useAuthHook from '../../Hooks/useAuthHook';
 
 const AddQueryForm = () => {
 
-    const {user} = useAuthHook();
+    const { user } = useAuthHook();
     const navigate = useNavigate();
 
     const handleAddQuery = (e) => {
@@ -14,7 +14,7 @@ const AddQueryForm = () => {
 
         const formData = new FormData(e.target);
         const initialData = Object.fromEntries(formData.entries());
-        console.log(initialData);
+        // console.log(initialData);
 
         // fetch('http://localhost:5000/queries', {
         //     method: 'POST',
@@ -45,12 +45,12 @@ const AddQueryForm = () => {
             userProfileImage: user.photoURL,
             currentDateTime: new Date().toISOString(),
             recommendationCount: 0,
-          };
-            
-    
+        };
+
+
         axios.post('http://localhost:5000/queries', queryData)
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 if (data.data.insertedId) {
                     Swal.fire({
                         position: "center",

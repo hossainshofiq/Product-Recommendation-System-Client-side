@@ -16,11 +16,11 @@ const Login = () => {
 
         const email = e.target.email.value;
         const password = e.target.password.value;
-        console.log('user:', email, password);
+        // console.log('user:', email, password);
 
         signInUser(email, password)
             .then(result => {
-                console.log('Signin done:', result.user);
+                // console.log('Signin done:', result.user);
                 Swal.fire({
                     position: "center",
                     icon: "success",

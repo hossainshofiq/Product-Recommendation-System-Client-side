@@ -21,7 +21,7 @@ const Register = () => {
         const photo = form.photo.value;
 
         const user = { name, email, password, photo }
-        console.log(user);
+        // console.log(user);
 
         // To-do: if have some free time, implement password validation and showPassword functionality
         const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
@@ -41,7 +41,7 @@ const Register = () => {
 
         createUser(email, password)
             .then(result => {
-                console.log(result.user);
+                // console.log(result.user);
                 const user = result.user;
                 setUser(user);
 
@@ -55,7 +55,7 @@ const Register = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log("User created to db", data);
+                        // console.log("User created to db", data);
                     })
 
                 // axios.post('http://localhost:5000/users', newUser)
