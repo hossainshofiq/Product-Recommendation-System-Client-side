@@ -1,6 +1,6 @@
 import Lottie from 'lottie-react';
 import React from 'react';
-import { data, Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import register from '../assets/Lottie/register.json'
 import useAuthHook from '../Hooks/useAuthHook';
 import Swal from 'sweetalert2';
@@ -10,6 +10,8 @@ const Register = () => {
 
     const { createUser, setUser, updateUserProfile } = useAuthHook();
     const navigate = useNavigate();
+    const location = useLocation();
+    console.log(location);
 
     const handleRegister = (e) => {
         e.preventDefault();
@@ -44,6 +46,7 @@ const Register = () => {
                 // console.log(result.user);
                 const user = result.user;
                 setUser(user);
+                navigate(location?.state || '/');
 
                 const newUser = { name, email };
                 fetch('http://localhost:5000/users', {

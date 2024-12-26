@@ -1,8 +1,9 @@
 import React from 'react';
 import useAuthHook from '../../Hooks/useAuthHook';
 import axios from 'axios';
-import { data, useLoaderData, useNavigate } from 'react-router-dom';
+import { Link, useLoaderData, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 
 const MyQueryUpdate = () => {
 
@@ -12,7 +13,7 @@ const MyQueryUpdate = () => {
 
     const { _id, productName, productBrand, productImageUrl, queryTitle, boycottingReasonDetails, userEmail, userName, userProfileImage } = query;
     // const { _id, } = query;
-    console.log(_id);
+    // console.log(_id);
 
     const handleUpdateQuery = (e) => {
         e.preventDefault();
@@ -60,8 +61,11 @@ const MyQueryUpdate = () => {
     return (
         <div className="hero">
             <div className="hero-content flex-col">
-                <h1 className="text-5xl font-bold text-center mb-5">Update Your Query</h1>
-                <div className="card bg-base-100 w-full max-w-sm shrink-0 border">
+                <h1 className="text-5xl font-bold text-center mb-5">Update Query: {productName} </h1>
+                
+                <Link to='/myQueries' className='btn'><button className='flex gap-2'><FaArrowLeft></FaArrowLeft> Back to My Queries</button></Link>
+                
+                <div className="card bg-base-100 w-full shrink-0 border">
                     <form onSubmit={handleUpdateQuery} className="card-body">
                         <div className="form-control">
                             <label className="label">
@@ -81,28 +85,29 @@ const MyQueryUpdate = () => {
                             </label>
                             <input defaultValue={productImageUrl} name='productImageUrl' type="url" placeholder="enter photo image url" className="input input-bordered rounded-md text-sm" required />
                         </div>
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Query Title</span>
-                            </label>
-                            <select defaultValue='Pick your query title' name='queryTitle' className="select select-bordered w-full max-w-xs">
-                                <option disabled>Pick your query title</option>
-                                <option>Is there any Better product that gives me the same quality?</option>
-                                <option>Are there more affordable alternatives to this product?</option>
-                                <option>Which product provides the best value for money?</option>
-                                <option>What are the best alternatives in the same price range?</option>
-                            </select>
-                        </div>
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Boycotting Reason</span>
-                            </label>
-                            {/* <input name='boycott' type="text" placeholder="describe the reason of boycott" className="input input-bordered rounded-md" required /> */}
-                            <textarea
-                            defaultValue={boycottingReasonDetails}
-                                name='boycottingReasonDetails'
-                                placeholder="describe the reason of boycott"
-                                className="textarea textarea-bordered textarea-xs text-sm w-full max-w-xs"></textarea>
+                        <div className='md:flex lg:flex gap-5 items-center'>
+                            <div className="form-control w-full">
+                                <label className="label">
+                                    <span className="label-text">Query Title</span>
+                                </label>
+                                <select defaultValue='Pick your query title' name='queryTitle' className="select select-bordered w-full ">
+                                    <option disabled>Pick your query title</option>
+                                    <option>Is there any Better product that gives me the same quality?</option>
+                                    <option>Are there more affordable alternatives to this product?</option>
+                                    <option>Which product provides the best value for money?</option>
+                                    <option>What are the best alternatives in the same price range?</option>
+                                </select>
+                            </div>
+                            <div className="form-control w-full">
+                                <label className="label">
+                                    <span className="label-text">Boycotting Reason</span>
+                                </label>
+                                <textarea
+                                    defaultValue={boycottingReasonDetails}
+                                    name='boycottingReasonDetails'
+                                    placeholder="describe the reason of boycott"
+                                    className="textarea textarea-bordered textarea-xs text-sm w-full "></textarea>
+                            </div>
                         </div>
 
                         <div className="form-control">

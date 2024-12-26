@@ -4,7 +4,7 @@ import Swal from 'sweetalert2';
 
 const MyQueryCard = ({ query, queries, setQueries }) => {
 
-    const { _id } = query
+    const { _id } = query;
 
     const handleQueryDelete = (_id) => {
         // console.log(_id);
@@ -38,7 +38,7 @@ const MyQueryCard = ({ query, queries, setQueries }) => {
         })
     }
     return (
-        <div className="card bg-base-100 w-96 shadow-xl my-10 border mx-auto">
+        <div className="card bg-base-100 w-full shadow-xl my-10 border mx-auto">
             <figure className="px-10 pt-10">
                 <img
                     src={query.productImageUrl}
@@ -48,6 +48,7 @@ const MyQueryCard = ({ query, queries, setQueries }) => {
             </figure>
             <div className="card-body items-center text-center">
                 <h2 className="card-title">{query.productName}</h2>
+                <h2 className="card-title">{query.productBrand}</h2>
                 <p>{query.queryTitle}</p>
                 <div className="card-actions">
                     <Link to={`/myQueries/queryDetails/${_id}`}>

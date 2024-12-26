@@ -56,14 +56,14 @@ const Navbar = () => {
                     </div>
                     <ul
                         tabIndex={0}
-                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-56 p-2 shadow">
+                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[50] mt-3 w-56 p-2 shadow">
                         {links}
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-xl">
+                <Link to='/' className="btn btn-ghost text-xl">
                     <img className='w-10' src={websiteLogo} alt="" />
                     PerfectAlt
-                </a>
+                </Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">

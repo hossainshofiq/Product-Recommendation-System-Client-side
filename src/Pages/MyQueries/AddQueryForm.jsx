@@ -43,9 +43,21 @@ const AddQueryForm = () => {
             userEmail: user.email,
             userName: user.displayName,
             userProfileImage: user.photoURL,
-            currentDateTime: new Date().toISOString(),
-            recommendationCount: 0,
+            currentDateTime: formatDate(new Date()),
+            // recommendationCount: 0,
         };
+
+        function formatDate(date) {
+            const options = {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: true
+            };
+            return new Intl.DateTimeFormat('en-GB', options).format(date);
+        }
 
 
         axios.post('http://localhost:5000/queries', queryData)

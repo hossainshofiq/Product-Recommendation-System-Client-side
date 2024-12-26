@@ -2,7 +2,7 @@ import React from 'react';
 
 const RecentQueryCard = ({ query }) => {
 
-    const { productImageUrl, productName, productBrand, queryTitle } = query;
+    const { productImageUrl, productName, productBrand } = query;
     return (
         <div className="card card-compact bg-base-100 border w-full shadow-xl p-5">
             <figure>
@@ -13,7 +13,7 @@ const RecentQueryCard = ({ query }) => {
             </figure>
             <div className="card-body">
                 <h2 className="card-title">{productName}</h2>
-                <p>{queryTitle} </p>
+                <h2 className="card-title">{productBrand}</h2>
                 <div className="card-actions justify-end">
                     <button className="btn btn-primary">Buy Now</button>
                 </div>

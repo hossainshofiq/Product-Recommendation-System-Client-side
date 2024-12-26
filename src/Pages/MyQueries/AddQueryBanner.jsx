@@ -26,16 +26,15 @@ const AddQueryBanner = () => {
                 </div>
                 <div className='w-1/2 text-white'>
                     <motion.h1
-                        animate={{ y: -20 }}
-                        transition={{ duration: 2, delay: 1, ease: easeOut, repeat: Infinity }}
+                        // animate={{ y: -20 }}
+                        // transition={{ duration: 2, delay: 1, ease: easeOut, repeat: Infinity }}
                         className="text-5xl font-bold">Add Your
                         <motion.span
                             animate={{ color: ['#ffffff', '#0651b7', '#06e32e'] }}
                             transition={{ duration: 1.75, repeat: Infinity }}
-                        >Queries....</motion.span></motion.h1>
+                        >Queries</motion.span></motion.h1>
                     <p className="py-6">
-                        Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
-                        quasi. In deleniti eaque aut repudiandae et a id nisi.
+                    Find the perfect product tailored to your needs!
                     </p>
                     <Link to='/addQuery'>
                         <motion.button

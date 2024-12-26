@@ -19,23 +19,25 @@ const MyQueries = () => {
     return (
         <div className="text-center my-10">
             <AddQueryBanner></AddQueryBanner>
-            <h1 className="font-bold text-5xl my-10">My Queries: {queries.length}</h1>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
-                {
-                    queries.length > 0 ?
-                        (queries.map(query => <MyQueryCard key={query._id} query={query} queries={queries} setQueries={setQueries}></MyQueryCard>)
-                        ) : (
-                            <div className='text-center'>
-                                <p className="text-xl text-gray-500 my-5">No queries found. Start by adding your first query!</p>
-                                <Link to='/addQuery'>
-                                    <button className="btn btn-primary">
-                                        Add Query
-                                    </button>
-                                </Link>
-                            </div>)
-                }
-
-                {/* {queries.length > 0 ? (
+            <div className='max-w-7xl mx-auto'>
+                <h1 className="font-bold text-5xl my-10">My Queries: {queries.length}</h1>
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
+                    {
+                        queries.length > 0 ?
+                            (queries.map(query => <MyQueryCard key={query._id} query={query} queries={queries} setQueries={setQueries}></MyQueryCard>)
+                            ) : (
+                                <div className='text-center'>
+                                    <p className="text-xl text-gray-500 my-5">No queries found. Start by adding your first query!</p>
+                                    <Link to='/addQuery'>
+                                        <button className="btn btn-primary">
+                                            Add Query
+                                        </button>
+                                    </Link>
+                                </div>)
+                    }
+                </div>
+            </div>
+            {/* {queries.length > 0 ? (
                     queries.map((query) => (
                         <div key={query._id} className="card bg-base-100 w-96 shadow-xl my-10 border mx-auto">
                             <figure className="px-10 pt-10">
@@ -68,7 +70,6 @@ const MyQueries = () => {
                         </Link>
                     </div>
                 )} */}
-            </div>
         </div>
     );
 };
