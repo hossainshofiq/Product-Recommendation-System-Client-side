@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import useAuthHook from '../../Hooks/useAuthHook';
 import { Tooltip } from 'react-tooltip';
 import websiteLogo from '../../assets/quires_logo.png'
 const Navbar = () => {
 
-    const { user, signOutUser } = useAuthHook();
+    const { user, loading, signOutUser } = useAuthHook();
 
     const handleSignOut = () => {
         signOutUser()
@@ -36,6 +36,7 @@ const Navbar = () => {
             }
         </div>
     </>
+
     return (
         <div className="navbar bg-base-100">
             <div className="navbar-start">

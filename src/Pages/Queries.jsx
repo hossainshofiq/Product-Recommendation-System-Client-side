@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLoaderData, useParams } from 'react-router-dom';
 
 const Queries = () => {
 
-    const loadedQueries = useLoaderData();
-    const [queries, setQueries] = useState(loadedQueries);
+    const queries = useLoaderData();
+    
+    // const [queries, setQueries] = useState(loadedQueries);
     // console.log(queries);
+    // const {count, setCount} = useState(0);
 
     return (
         <div className='max-w-5xl mx-auto my-10'>
@@ -28,8 +30,8 @@ const Queries = () => {
 
                             </div>
                             <div className="flex flex-col items-center gap-5">
-                                <h4>recommendationCount: </h4>
-                                <Link><button className='btn btn-success'>Recommend</button></Link>
+                                <h4>recommendationCount: {query?.recommendationCount}</h4>
+                                <Link to={`/recommendationForm/${query._id}`}><button className='btn btn-success'>Recommend</button></Link>
                             </div>
                         </div>
                     )

@@ -44,7 +44,7 @@ const AddQueryForm = () => {
             userName: user.displayName,
             userProfileImage: user.photoURL,
             currentDateTime: formatDate(new Date()),
-            // recommendationCount: 0,
+            recommendationCount: 0,
         };
 
         function formatDate(date) {

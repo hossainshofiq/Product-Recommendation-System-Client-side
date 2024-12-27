@@ -13,6 +13,7 @@ import MyQueries from '../Pages/MyQueries/MyQueries';
 import AddQueryForm from '../Pages/MyQueries/AddQueryForm';
 import MyQueryDetails from '../Pages/MyQueryDetails';
 import MyQueryUpdate from './../Pages/MyQueries/MyQueryUpdate';
+import RecommendationForm from '../Pages/RecommendationForm';
 
 const router = createBrowserRouter([
     {
@@ -42,9 +43,17 @@ const router = createBrowserRouter([
                 element: <MyQueryDetails></MyQueryDetails>,
                 loader: ({ params }) => fetch(`http://localhost:5000/queries/${params.id}`)
             },
+            //
             {
                 path: '/recommendationsForMe',
                 element: <RecommendationsForMe></RecommendationsForMe>
+            },
+            {
+                path: '/recommendationForm/:id',
+                element: <PrivateRoute>
+                    <RecommendationForm></RecommendationForm>
+                </PrivateRoute>,
+                loader: ({ params }) => fetch(`http://localhost:5000/queries/${params.id}`),
             },
             {
                 path: '/myQueries',

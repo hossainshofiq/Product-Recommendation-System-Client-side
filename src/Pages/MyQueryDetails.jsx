@@ -23,46 +23,46 @@ const MyQueryDetails = () => {
                 .catch((error) => console.error("Error fetching query details:", error));
         }, [id]);
 
-    const handleAddRecommendation = (e) => {
-        e.preventDefault();
+    // const handleAddRecommendation = (e) => {
+    //     e.preventDefault();
 
-        const formData = new FormData(e.target);
-        const addRecommendation = Object.fromEntries(formData.entries());
-        console.log(addRecommendation);
+    //     const formData = new FormData(e.target);
+    //     const addRecommendation = Object.fromEntries(formData.entries());
+    //     console.log(addRecommendation);
 
-        const queryRecommendation = {
-            queryId: id,
-            queryTitle: recommendation.queryTitle,
-            productName: recommendation.productName,
-            userEmail: recommendation.userEmail,
-            userName: recommendation.userName,
-            currentUserEmail: user.email,
-            currentUserName: user.displayName,
-            currentDateTime: formatDate(new Date()),
-            ...addRecommendation
-        }
+    //     const queryRecommendation = {
+    //         queryId: id,
+    //         queryTitle: recommendation.queryTitle,
+    //         productName: recommendation.productName,
+    //         userEmail: recommendation.userEmail,
+    //         userName: recommendation.userName,
+    //         currentUserEmail: user.email,
+    //         currentUserName: user.displayName,
+    //         currentDateTime: formatDate(new Date()),
+    //         ...addRecommendation
+    //     }
 
-        function formatDate(date) {
-            const options = {
-                day: '2-digit',
-                month: '2-digit',
-                year: 'numeric',
-            };
-            return new Intl.DateTimeFormat('en-GB', options).format(date);
-        }
+    //     function formatDate(date) {
+    //         const options = {
+    //             day: '2-digit',
+    //             month: '2-digit',
+    //             year: 'numeric',
+    //         };
+    //         return new Intl.DateTimeFormat('en-GB', options).format(date);
+    //     }
 
-        fetch('http://localhost:5000/recommendations', {
-            method: 'POST',
-            headers: {
-                'content-type' : 'application/json'
-            },
-            body: JSON.stringify(queryRecommendation)
-        })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-        })
-    }
+    //     fetch('http://localhost:5000/recommendations', {
+    //         method: 'POST',
+    //         headers: {
+    //             'content-type' : 'application/json'
+    //         },
+    //         body: JSON.stringify(queryRecommendation)
+    //     })
+    //     .then(res => res.json())
+    //     .then(data => {
+    //         console.log(data);
+    //     })
+    // }
 
     return (
         <div className='max-w-5xl mx-auto my-10'>
@@ -98,7 +98,7 @@ const MyQueryDetails = () => {
             {/* <AddRecommendationForm></AddRecommendationForm> */}
 
             {/* recommendation form section */}
-            <div className="">
+            {/* <div className="">
                 <h1 className="text-5xl font-bold text-center mb-5">Add A Recommendation</h1>
                 <div className="bg-base-100 w-full border shrink-0">
                     <form onSubmit={handleAddRecommendation} className="card-body">
@@ -131,7 +131,7 @@ const MyQueryDetails = () => {
                         </div>
                     </form>
                 </div>
-            </div>
+            </div> */}
 
         </div>
     );
