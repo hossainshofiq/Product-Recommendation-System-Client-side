@@ -44,30 +44,23 @@ const router = createBrowserRouter([
                 </PrivateRoute>
             },
             {
-                path: '/recommendationForm/:id',
-                element: <PrivateRoute>
-                    <RecommendationForm></RecommendationForm>
-                </PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/queries/${params.id}`),
-            },
-            {
                 path: '/myQueries',
                 element: <PrivateRoute>
                     <MyQueries></MyQueries>,
                 </PrivateRoute>,
             },
             {
-                path: '/myRecommendations',
-                element: <PrivateRoute>
-                    <MyRecommendations></MyRecommendations>
-                </PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/recommendations/${params.id}`)
-            },
-            {
                 path: '/addQuery',
                 element: <PrivateRoute>
                     <AddQueryForm></AddQueryForm>
                 </PrivateRoute>
+            },
+            {
+                path: '/recommendationForm/:id',
+                element: <PrivateRoute>
+                    <RecommendationForm></RecommendationForm>
+                </PrivateRoute>,
+                loader: ({ params }) => fetch(`http://localhost:5000/queries/${params.id}`),
             },
             {
                 path: '/myQueries/queryDetails/:id',
@@ -82,7 +75,14 @@ const router = createBrowserRouter([
                     <MyQueryUpdate></MyQueryUpdate>
                 </PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/queries/${params.id}`)
-            }
+            },
+            {
+                path: '/myRecommendations',
+                element: <PrivateRoute>
+                    <MyRecommendations></MyRecommendations>
+                </PrivateRoute>,
+                // loader: ({ params }) => fetch(`http://localhost:5000/recommendations/${params.id}`)
+            },
         ]
     },
     // {
