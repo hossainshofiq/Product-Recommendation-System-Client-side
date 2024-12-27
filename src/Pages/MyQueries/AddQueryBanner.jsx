@@ -10,7 +10,7 @@ const AddQueryBanner = () => {
     return (
         <div className="hero bg-[#27006f] min-h-96">
             <div className="hero-content flex-col lg:flex-row">
-                <div className='w-1/2'>
+                <div className='flex-1'>
 
                     <motion.img
                         animate={{ y: [50, 100, 50] }}
@@ -24,7 +24,7 @@ const AddQueryBanner = () => {
                         className="max-w-sm rounded-t-[40px] rounded-br-[40px] shadow-2xl mt-10 w-64" />
 
                 </div>
-                <div className='w-1/2 text-white'>
+                <div className='flex-1 text-white'>
                     <motion.h1
                         // animate={{ y: -20 }}
                         // transition={{ duration: 2, delay: 1, ease: easeOut, repeat: Infinity }}

@@ -37,16 +37,11 @@ const router = createBrowserRouter([
                 element: <Queries></Queries>,
                 loader: () => fetch('http://localhost:5000/queries'),
             },
-            //
-            {
-                path: '/queries/queryDetails/:id',
-                element: <MyQueryDetails></MyQueryDetails>,
-                loader: ({ params }) => fetch(`http://localhost:5000/queries/${params.id}`)
-            },
-            //
             {
                 path: '/recommendationsForMe',
-                element: <RecommendationsForMe></RecommendationsForMe>
+                element: <PrivateRoute>
+                    <RecommendationsForMe></RecommendationsForMe>
+                </PrivateRoute>
             },
             {
                 path: '/recommendationForm/:id',
@@ -63,7 +58,10 @@ const router = createBrowserRouter([
             },
             {
                 path: '/myRecommendations',
-                element: <MyRecommendations></MyRecommendations>
+                element: <PrivateRoute>
+                    <MyRecommendations></MyRecommendations>
+                </PrivateRoute>,
+                loader: ({ params }) => fetch(`http://localhost:5000/recommendations/${params.id}`)
             },
             {
                 path: '/addQuery',
@@ -80,7 +78,9 @@ const router = createBrowserRouter([
             },
             {
                 path: 'myQueries/queryUpdate/:id',
-                element: <MyQueryUpdate></MyQueryUpdate>,
+                element: <PrivateRoute>
+                    <MyQueryUpdate></MyQueryUpdate>
+                </PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/queries/${params.id}`)
             }
         ]

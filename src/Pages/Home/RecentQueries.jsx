@@ -7,11 +7,9 @@ const RecentQueries = () => {
     const [queries, setQueries] = useState([]);
 
     useEffect(() => {
-        // fetch('http://localhost:5000/queries')
         axios('http://localhost:5000/queries')
-            // .then(res => res.json())
-            .then(data => {
-                setQueries(data.data);
+            .then(res => {
+                setQueries(res.data);
             })
     }, [])
 

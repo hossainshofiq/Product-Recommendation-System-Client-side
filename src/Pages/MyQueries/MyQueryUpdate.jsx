@@ -12,36 +12,13 @@ const MyQueryUpdate = () => {
     const navigate = useNavigate();
 
     const { _id, productName, productBrand, productImageUrl, queryTitle, boycottingReasonDetails, userEmail, userName, userProfileImage } = query;
-    // const { _id, } = query;
-    // console.log(_id);
-
+   
     const handleUpdateQuery = (e) => {
         e.preventDefault();
 
         const formData = new FormData(e.target);
         const updatedQuery = Object.fromEntries(formData.entries());
         console.log(updatedQuery);
-
-        // fetch(`http://localhost:5000/queries/${_id}`, {
-        //     method: 'PUT',
-        //     headers: {
-        //         'content-type': 'application/json'
-        //     },
-        //     body: JSON.stringify(updatedQuery)
-        // })
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         console.log(data);
-        //         if (data.modifiedCount) {
-        //             Swal.fire({
-        //                 title: 'Success!',
-        //                 text: 'Equipment Updated successfully',
-        //                 icon: 'success',
-        //                 confirmButtonText: 'Cool'
-        //             })
-        //             navigate('/myQueries');
-        //         }
-        //     })
 
         axios.put(`http://localhost:5000/queries/${_id}`, updatedQuery)
             .then(res => {
@@ -90,7 +67,7 @@ const MyQueryUpdate = () => {
                                 <label className="label">
                                     <span className="label-text">Query Title</span>
                                 </label>
-                                <select defaultValue='Pick your query title' name='queryTitle' className="select select-bordered w-full ">
+                                <select defaultValue='queryTitle' name='queryTitle' className="select select-bordered w-full ">
                                     <option disabled>Pick your query title</option>
                                     <option>Is there any Better product that gives me the same quality?</option>
                                     <option>Are there more affordable alternatives to this product?</option>
@@ -110,19 +87,19 @@ const MyQueryUpdate = () => {
                             </div>
                         </div>
 
-                        <div className="form-control">
+                        {/* <div className="form-control">
                             <label className="label">
                                 <span className="label-text">User email</span>
                             </label>
                             <input defaultValue={user?.email} disabled name='userEmail' type="url" placeholder="enter photo image url" className="input input-bordered rounded-md text-sm" required />
-                        </div>
+                        </div> */}
 
-                        <div className="form-control">
+                        {/* <div className="form-control">
                             <label className="label">
                                 <span className="label-text">User name</span>
                             </label>
                             <input defaultValue={user?.displayName} disabled name='userName' type="url" placeholder="enter photo image url" className="input input-bordered rounded-md text-sm" required />
-                        </div>
+                        </div> */}
 
                         <div className="form-control">
                             <label className="label">

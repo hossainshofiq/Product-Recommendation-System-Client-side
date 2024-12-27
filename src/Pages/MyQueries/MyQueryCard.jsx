@@ -38,28 +38,35 @@ const MyQueryCard = ({ query, queries, setQueries }) => {
         })
     }
     return (
-        <div className="card bg-base-100 w-full shadow-xl my-10 border mx-auto">
-            <figure className="px-10 pt-10">
+        <div className="card bg-white shadow-lg rounded-lg w-full my-10 border mx-auto transform transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl">
+            <figure className="px-5 pt-5">
                 <img
                     src={query.productImageUrl}
                     alt={query.productName}
                     className="rounded-xl"
                 />
             </figure>
-            <div className="card-body items-center text-center">
-                <h2 className="card-title">{query.productName}</h2>
-                <h2 className="card-title">{query.productBrand}</h2>
-                <p>{query.queryTitle}</p>
-                <div className="card-actions">
+            <div className="card-body text-center p-5">
+                <h2 className="text-2xl font-bold text-gray-800">{query.productName}</h2>
+                <h3 className="text-lg font-semibold text-gray-500">{query.productBrand}</h3>
+                <p className="text-gray-600 my-3">{query.queryTitle}</p>
+                <div className="card-actions flex justify-center space-x-3 mt-4 font-semibold">
                     <Link to={`/myQueries/queryDetails/${_id}`}>
-                        <button className="btn btn-primary">View Details</button>
+                        <button className="px-4 py-2  bg-blue-500 text-white rounded-md shadow hover:bg-blue-600">
+                            View Details
+                        </button>
                     </Link>
                     <Link to={`/myQueries/queryUpdate/${_id}`}>
-                        <button className="btn btn-primary">Update</button>
+                        <button className="px-4 py-2 bg-green-500 text-white rounded-md shadow hover:bg-green-600">
+                            Update
+                        </button>
                     </Link>
-
-                    <button onClick={() => handleQueryDelete(_id)} className="btn btn-primary">Delete</button>
-
+                    <button
+                        onClick={() => handleQueryDelete(_id)}
+                        className="px-4 py-2 bg-red-500 text-white rounded-md shadow hover:bg-red-600"
+                    >
+                        Delete
+                    </button>
                 </div>
             </div>
         </div>
