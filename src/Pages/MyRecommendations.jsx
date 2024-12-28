@@ -44,7 +44,7 @@ const MyRecommendations = () => {
                                 text: "Your Recommendation has been deleted.",
                                 icon: "success"
                             });
-                            
+
                         }
                     })
             }
@@ -58,24 +58,19 @@ const MyRecommendations = () => {
             <div className='border rounded-md shadow-lg overflow-hidden'>
                 <div className="overflow-x-auto">
                     <table className="table-auto w-full text-left border-collapse">
-                        {/* Table Head */}
                         <thead className='bg-blue-600 text-white'>
                             <tr>
                                 <th className="px-4 py-2">#</th>
-                                <th className="px-4 py-2">User Info</th>
+                                <th className="px-4 py-2">Recommended User Info</th>
                                 <th className="px-4 py-2">Product Info</th>
                                 <th className="px-4 py-2">Recommendation Reason</th>
                                 <th className="px-4 py-2">Actions</th>
                             </tr>
                         </thead>
-                        {/* Table Body */}
                         <tbody className="divide-y divide-gray-300">
                             {
                                 recommendation.map((recommend, index) => (
-                                    <tr
-                                        key={recommend._id}
-                                        className="hover:bg-gray-200 transition-colors duration-300"
-                                    >
+                                    <tr key={recommend._id} className="hover:bg-gray-200 transition-colors duration-300">
                                         <td className="px-4 py-3">{index + 1}</td>
                                         <td className="px-4 py-3">
                                             <div className="flex items-center gap-3">
@@ -95,8 +90,8 @@ const MyRecommendations = () => {
                                         </td>
                                         <td className="px-4 py-3">
                                             <div className="text-gray-800">{recommend.productName}</div>
-                                            <span className="badge badge-primary badge-sm">
-                                                {recommend.recommendationTitle}
+                                            <span className="badge badge-primary px-3 py-2 badge-sm">
+                                                Recommendation Title: {recommend.recommendationTitle}
                                             </span>
                                         </td>
                                         <td className="px-4 py-3 text-gray-600">{recommend.recommendationReason}</td>

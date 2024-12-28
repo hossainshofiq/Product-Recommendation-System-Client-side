@@ -1,5 +1,6 @@
 import React from 'react';
 import footerLogo from '../../assets/quires_logo.png'
+import { FaFacebook, FaGithub, FaLinkedin, FaLinkedinIn } from 'react-icons/fa';
 
 const Footer = () => {
     return (
@@ -28,10 +29,18 @@ const Footer = () => {
                     <a className="link link-hover">Press kit</a>
                 </nav>
                 <nav>
-                    <h6 className="footer-title">Legal</h6>
-                    <a className="link link-hover">Terms of use</a>
-                    <a className="link link-hover">Privacy policy</a>
-                    <a className="link link-hover">Cookie policy</a>
+                    <h6 className="footer-title">Social</h6>
+                    <div className="grid grid-flow-col gap-4">
+                        <a className='hover:cursor-pointer text-3xl'>
+                            <FaFacebook></FaFacebook>
+                        </a>
+                        <a className='hover:cursor-pointer text-3xl'>
+                            <FaLinkedinIn></FaLinkedinIn>
+                        </a>
+                        <a className='hover:cursor-pointer text-3xl'>
+                            <FaGithub ></FaGithub>
+                        </a>
+                    </div>
                 </nav>
             </footer>
             <footer className="footer footer-center bg-base-300 text-base-content p-4">

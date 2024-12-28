@@ -21,11 +21,11 @@ const RecentQueryCard = ({ query }) => {
                 <h3 className="text-md text-gray-500 font-medium">{queryTitle}</h3>
                 <h3 className="text-md text-gray-500 font-medium">{currentDateTime}</h3>
 
-                <div className="card-actions justify-center mt-4">
+                {/* <div className="card-actions justify-center mt-4">
                     <Link><button className="btn px-4 py-2 bg-green-500 text-white rounded-md shadow hover:bg-green-600 focus:ring ">
                         Buy Now
                     </button></Link>
-                </div>
+                </div> */}
             </div>
         </div>
     );

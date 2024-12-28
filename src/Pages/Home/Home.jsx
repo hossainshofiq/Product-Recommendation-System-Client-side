@@ -4,7 +4,7 @@ import RecentQueries from './RecentQueries';
 
 const Home = () => {
     return (
-        <div className='my-10'>
+        <div className=''>
             <Slider></Slider>
             <RecentQueries></RecentQueries>
         </div>

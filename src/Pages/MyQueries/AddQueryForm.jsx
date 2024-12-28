@@ -18,28 +18,6 @@ const AddQueryForm = () => {
         const initialData = Object.fromEntries(formData.entries());
         // console.log(initialData);
 
-        // fetch('http://localhost:5000/queries', {
-        //     method: 'POST',
-        //     headers: {
-        //         'content-type': 'application/json'
-        //     },
-        //     body: JSON.stringify(initialData)
-        // })
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         console.log(data);
-        //         if (data.insertedId) {
-        //             Swal.fire({
-        //                 position: "center",
-        //                 icon: "success",
-        //                 title: "Your query added successfully",
-        //                 showConfirmButton: false,
-        //                 timer: 1500
-        //             });
-        //             navigate('/myQueries')
-        //         }
-        //     })
-
         const queryData = {
             ...initialData,
             userEmail: user.email,
@@ -79,13 +57,13 @@ const AddQueryForm = () => {
 
     }
     return (
-        <div className="hero bg-gradient-to-r from-indigo-50 via-white to-indigo-50 py-10">
+        <div className="hero bg-gradient-to-r from-indigo-50 via-white to-indigo-50 my-10">
             <div className="hero-content w-full max-w-5xl flex flex-col items-center">
                 {/* Header Section */}
-                <h1 className="text-4xl font-extrabold text-center mb-6 text-indigo-600">
+                <h1 className="text-4xl font-extrabold text-center mb-5 text-indigo-600">
                     Add Your Query
                 </h1>
-                <Link to="/myQueries" className="btn btn-outline flex items-center gap-2 mb-6 text-indigo-500 border-indigo-500 hover:bg-indigo-100 hover:text-black">
+                <Link to="/myQueries" className="btn btn-outline flex items-center gap-2 mb-5 text-indigo-500 border-indigo-500 hover:bg-indigo-100 hover:text-black">
                     <FaArrowLeft className="text-lg" />
                     Back to My Queries
                 </Link>

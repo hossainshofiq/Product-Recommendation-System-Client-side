@@ -23,10 +23,11 @@ const RecommendationsForMe = () => {
                         <thead className='bg-blue-600 text-white'>
                             <tr>
                                 <th className="px-4 py-2">#</th>
-                                <th className="px-4 py-2">User Info</th>
+                                <th className="px-4 py-2">Recommender User Info</th>
                                 <th className="px-4 py-2">Product Info</th>
                                 <th className="px-4 py-2">Recommendation Reason</th>
-                                <th className="px-4 py-2">Actions</th>
+                                <th className="px-4 py-2">Date</th>
+                                {/* <th className="px-4 py-2">Actions</th> */}
                             </tr>
                         </thead>
                         {/* Table Body */}
@@ -56,13 +57,16 @@ const RecommendationsForMe = () => {
                                         </td>
                                         <td className="px-4 py-3">
                                             <div className="text-gray-800">{recommend.productName}</div>
-                                            <span className="badge badge-primary badge-sm">
-                                                {recommend.recommendationTitle}
+                                            <span className="badge badge-primary px-3 py-2 badge-sm">
+                                                Recommendation Title: {recommend.recommendationTitle}
                                             </span>
                                         </td>
                                         <td className="px-4 py-3 text-gray-600">{recommend.recommendationReason}</td>
-                                        <td className="px-4 py-3">
+                                        {/* <td className="px-4 py-3">
                                             <button className="btn btn-sm btn-primary">Details</button>
+                                        </td> */}
+                                        <td className="px-4 py-3">
+                                            <span>{recommend.currentDateTime}</span>
                                         </td>
                                     </tr>
                                 ))
