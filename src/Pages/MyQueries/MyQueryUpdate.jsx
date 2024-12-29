@@ -12,7 +12,7 @@ const MyQueryUpdate = () => {
     const navigate = useNavigate();
 
     const { _id, productName, productBrand, productImageUrl, queryTitle, boycottingReasonDetails, userEmail, userName, userProfileImage } = query;
-   
+
     const handleUpdateQuery = (e) => {
         e.preventDefault();
 
@@ -37,37 +37,37 @@ const MyQueryUpdate = () => {
     }
     return (
         <div className="hero">
-            <div className="hero-content flex-col">
-                <h1 className="text-5xl font-bold text-center mb-5">Update Query: {productName} </h1>
-                
-                <Link to='/myQueries' className='btn'><button className='flex gap-2'><FaArrowLeft></FaArrowLeft> Back to My Queries</button></Link>
-                
-                <div className="card bg-base-100 w-full shrink-0 border">
+            <div className="hero-content p-5 flex-col">
+                <h1 className="text-3xl font-bold text-center mb-5">Update Query: <span className="text-primary">{productName}</span></h1>
+
+                <Link to='/myQueries'><button className='btn btn-outline items-center gap-2 mb-5 text-indigo-500 border-indigo-500 hover:bg-indigo-200 hover:text-black'><FaArrowLeft></FaArrowLeft> Back to My Queries</button></Link>
+
+                <div className="card bg-base-100 w-full shrink-0 rounded-md border">
                     <form onSubmit={handleUpdateQuery} className="card-body">
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Product Name</span>
                             </label>
-                            <input defaultValue={productName} name='productName' type="text" placeholder="enter product name" className="input input-bordered rounded-md text-sm" required />
+                            <input defaultValue={productName} name='productName' type="text" placeholder="enter product name" className="input input-bordered rounded-sm text-sm" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Product Brand</span>
                             </label>
-                            <input defaultValue={productBrand} name='productBrand' type="text" placeholder="enter product brand" className="input input-bordered rounded-md text-sm" required />
+                            <input defaultValue={productBrand} name='productBrand' type="text" placeholder="enter product brand" className="input input-bordered rounded-sm text-sm" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Product Image-URL</span>
                             </label>
-                            <input defaultValue={productImageUrl} name='productImageUrl' type="url" placeholder="enter photo image url" className="input input-bordered rounded-md text-sm" required />
+                            <input defaultValue={productImageUrl} name='productImageUrl' type="url" placeholder="enter photo image url" className="input input-bordered rounded-sm text-sm" required />
                         </div>
                         <div className='md:flex lg:flex gap-5 items-center'>
                             <div className="form-control w-full">
                                 <label className="label">
                                     <span className="label-text">Query Title</span>
                                 </label>
-                                <select defaultValue='queryTitle' name='queryTitle' className="select select-bordered w-full ">
+                                <select defaultValue='queryTitle' name='queryTitle' className="select select-bordered w-full rounded-sm">
                                     <option disabled>Pick your query title</option>
                                     <option>Is there any Better product that gives me the same quality?</option>
                                     <option>Are there more affordable alternatives to this product?</option>
@@ -83,7 +83,7 @@ const MyQueryUpdate = () => {
                                     defaultValue={boycottingReasonDetails}
                                     name='boycottingReasonDetails'
                                     placeholder="describe the reason of boycott"
-                                    className="textarea textarea-bordered textarea-xs text-sm w-full "></textarea>
+                                    className="textarea textarea-bordered textarea-xs rounded-sm text-sm w-full "></textarea>
                             </div>
                         </div>
 
@@ -105,11 +105,11 @@ const MyQueryUpdate = () => {
                             <label className="label">
                                 <span className="label-text">User Image-URL</span>
                             </label>
-                            <input defaultValue={user?.photoURL} disabled name='userImageUrl' type="url" placeholder="enter photo image url" className="input input-bordered rounded-md text-sm" required />
+                            <input defaultValue={user?.photoURL} disabled name='userImageUrl' type="url" placeholder="enter photo image url" className="input input-bordered rounded-sm text-sm" required />
                         </div>
 
                         <div className="form-control mt-6">
-                            <button className="btn rounded-md btn-primary">Update Query</button>
+                            <button className="btn btn-primary w-full rounded-sm bg-indigo-600 text-white hover:bg-indigo-700 focus:ring focus:ring-indigo-300">Update Query</button>
                         </div>
                     </form>
                 </div>

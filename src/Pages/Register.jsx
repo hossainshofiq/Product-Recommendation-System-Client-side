@@ -46,6 +46,14 @@ const Register = () => {
                 // console.log(result.user);
                 const user = result.user;
                 setUser(user);
+
+                // token created successfully
+                // axios.post('http://localhost:5000/jwt')
+                //     .then(res => {
+                //         console.log(res.data);
+                //     })
+                //
+                
                 navigate(location?.state || '/');
 
                 const newUser = { name, email };

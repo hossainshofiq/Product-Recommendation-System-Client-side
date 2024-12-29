@@ -5,7 +5,7 @@ const RecentQueryCard = ({ query }) => {
     const { productImageUrl, productName, productBrand, queryTitle, currentDateTime } = query;
 
     return (
-        <div className="card bg-white border rounded-lg shadow-lg hover:shadow-2xl transform transition-transform duration-300 hover:scale-105 p-4">
+        <div className="card bg-white border rounded-lg shadow-lg hover:shadow-2xl transform transition-transform duration-300 hover:scale-105 p-4 m-5">
 
             <figure className="flex justify-center">
                 <img

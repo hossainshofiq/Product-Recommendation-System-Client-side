@@ -7,8 +7,6 @@ const MyQueryCard = ({ query, queries, setQueries }) => {
     const { _id } = query;
 
     const handleQueryDelete = (_id) => {
-        // console.log(_id);
-
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -38,7 +36,7 @@ const MyQueryCard = ({ query, queries, setQueries }) => {
         })
     }
     return (
-        <div className="card bg-white shadow-lg rounded-lg w-full my-10 border mx-auto transform transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl">
+        <div className="card bg-white shadow-lg rounded-lg w-full border mx-auto transform transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl">
             <figure className="px-5 pt-5">
                 <img
                     src={query.productImageUrl}

@@ -9,15 +9,18 @@ import Swal from 'sweetalert2';
 const MyRecommendations = () => {
 
     // const recommended = useLoaderData();
-    const [recommendation, setRecommendation] = useState([]);
     const { user } = useAuthHook();
+    const [recommendation, setRecommendation] = useState([]);
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/recommendations?email=${user?.email}`)
-            .then(res => setRecommendation(res.data))
-    }, [user])
+        // cookie send to server
+        axios.get(`http://localhost:5000/myRecommendations?email=${user?.email}`, {withCredentials: true})
+            .then(res => {
+                setRecommendation(res.data);
+            })
+    }, [user.email])
 
-    // console.log(recommendation);
+    console.log(recommendation);
 
     const handleDeleteRecommendation = (_id) => {
         console.log(_id);
@@ -53,7 +56,7 @@ const MyRecommendations = () => {
 
     return (
         <div className='max-w-7xl mx-auto text-center my-10'>
-            <h1 className='font-bold text-5xl mb-5 text-gray-800'>My Recommendations</h1>
+            <h1 className='font-bold text-5xl mb-5 text-gray-800'>My Recommendations: {recommendation.length} </h1>
 
             <div className='border rounded-md shadow-lg overflow-hidden'>
                 <div className="overflow-x-auto">

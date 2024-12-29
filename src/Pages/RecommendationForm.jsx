@@ -33,14 +33,16 @@ const RecommendationForm = () => {
             productName: queryData.productName,
             userEmail: user?.email,
             userName: user?.displayName,
-            RecommenderEmail: queryData.userEmail,
-            RecommenderName: queryData.userName,
+            recommenderEmail: queryData?.userEmail,
+            recommenderName: queryData?.userName,
             currentDateTime: formatDate(new Date()),
             recommendationTitle: addRecommendation.recommendationTitle,
             recommendationProductName: addRecommendation.recommendationProductName,
             recommendationProductImage: addRecommendation.recommendationProductImage,
             recommendationReason: addRecommendation.recommendationReason,
         };
+
+        console.log(recommendFormDoc);
 
         fetch("http://localhost:5000/recommendations", {
             method: "POST",
@@ -71,7 +73,7 @@ const RecommendationForm = () => {
     };
 
     return (
-        <div className="space-y-12 px-4 py-6 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div className="space-y-12 px-5 py-10 sm:px-6 lg:px-8 max-w-7xl mx-auto">
             {/* Query details Card */}
             <div className="flex flex-col lg:flex-row bg-base-100 shadow-xl border p-6 rounded-lg">
                 <figure className="flex justify-center items-center bg-gray-100 rounded-lg p-4 mb-4 lg:mb-0 lg:mr-6 lg:w-1/3">
@@ -82,7 +84,7 @@ const RecommendationForm = () => {
                     />
                 </figure>
 
-                <div className="flex-1">
+                <div className="flex-1 pb-2">
                     <h2 className="text-2xl font-bold">{queryData?.productName}</h2>
                     <p className="text-gray-500">Brand: {queryData?.productBrand}</p>
                     <p className="mt-2 text-gray-700">
@@ -101,23 +103,23 @@ const RecommendationForm = () => {
                         alt={queryData?.userName}
                     />
                     <div className="text-center">
-                        <p className="font-semibold">{queryData?.userName}</p>
-                        <p className="text-sm text-gray-500">{queryData?.userEmail}</p>
+                        <p className="font-semibold">{queryData?.userEmail}</p>
+                        <p className="text-sm text-gray-500">{queryData?.userName}</p>
                     </div>
                 </div>
             </div>
 
-            <div className="grid grid-cols-12 gap-5">
+            <div className="lg:grid grid-cols-12 gap-5">
                 {/* Recommendation Form */}
                 <div className="lg:col-span-8">
-                    <div className="flex justify-between items-center mb-6">
-                        <h1 className="text-xl lg:text-4xl font-semibold text-gray-800">Add Recommendation</h1>
-                        <Link to="/queries" className="btn btn-outline flex items-center gap-2">
-                            <FaArrowLeft />
-                            Back to Queries
-                        </Link>
-                    </div>
-                    <div className="bg-white rounded-md shadow-md p-6 border">
+                    {/* <div className="flex justify-between items-center mb-6"> */}
+                    <h1 className="text-xl lg:text-3xl font-semibold text-gray-800 mb-5">Add Recommendation: <span className="text-primary">{queryData.productName}</span> </h1>
+                    <Link to="/queries" className="btn btn-outline items-center gap-2 mb-5 text-indigo-500 border-indigo-500 hover:bg-indigo-200 hover:text-black">
+                        <FaArrowLeft />
+                        Back to Queries
+                    </Link>
+                    {/* </div> */}
+                    <div className="bg-white rounded-sm shadow-md p-6 border mb-5">
                         <form onSubmit={handleAddRecommendation} className="space-y-5">
                             <div className="form-control">
                                 <label className="label font-medium">Recommendation Title</label>
@@ -125,7 +127,7 @@ const RecommendationForm = () => {
                                     name="recommendationTitle"
                                     type="text"
                                     placeholder="Title"
-                                    className="input input-bordered w-full"
+                                    className="input input-bordered rounded-sm w-full"
                                     required
                                 />
                             </div>
@@ -135,7 +137,7 @@ const RecommendationForm = () => {
                                     name="recommendationProductName"
                                     type="text"
                                     placeholder="Product name"
-                                    className="input input-bordered w-full"
+                                    className="input input-bordered rounded-sm w-full"
                                     required
                                 />
                             </div>
@@ -145,7 +147,7 @@ const RecommendationForm = () => {
                                     name="recommendationProductImage"
                                     type="url"
                                     placeholder="Image URL"
-                                    className="input input-bordered w-full"
+                                    className="input input-bordered rounded-sm w-full"
                                     required
                                 />
                             </div>
@@ -154,20 +156,20 @@ const RecommendationForm = () => {
                                 <textarea
                                     name="recommendationReason"
                                     placeholder="Why do you recommend this product?"
-                                    className="textarea textarea-bordered w-full"
+                                    className="textarea textarea-bordered rounded-sm w-full"
                                     required
                                 />
                             </div>
                             <div className="form-control">
-                                <button className="btn btn-primary w-full">Submit Recommendation</button>
+                                <button className="btn btn-primary w-full rounded-sm bg-indigo-600 text-white hover:bg-indigo-700 focus:ring focus:ring-indigo-300">Submit Recommendation</button>
                             </div>
                         </form>
                     </div>
                 </div>
 
                 {/* Comments Section */}
-                <div className="space-y-4 border rounded-md p-3 col-span-4">
-                    <h2 className="text-2xl font-medium text-gray-800">User Recommendations: {comments.length}</h2>
+                <div className="space-y-4 border rounded-md p-3 col-span-4 mb-5">
+                    <h2 className="text-lg lg:text-xl font-semibold text-gray-800">Users Recommendations: {comments.length}</h2>
                     <div className="divider"></div>
                     {comments.map((comment) => (
                         <div
@@ -177,12 +179,13 @@ const RecommendationForm = () => {
                             <div className="flex items-center space-x-2">
                                 <img
                                     src={comment?.recommendationProductImage}
-                                    alt={comment?.recommendationProductImage}
+                                    alt={comment?.recommendationProductName}
                                     className="w-20 h-20 object-cover rounded-full border"
                                 />
                                 <div>
-                                    <p className="text-gray-600 italic">Reason: "{comment?.recommendationReason}"</p>
-                                    <p className="text-gray-600 italic">Product Name: "{comment?.recommendationProductName}"</p>
+                                    <p className="text-gray-600">Reason: "{comment?.recommendationReason}"</p>
+                                    <p className="text-gray-600">Product Name: "{comment?.recommendationProductName}" </p>
+                                    <p className="text-sm font-semibold text-gray-800">{comment?.userEmail} </p>
                                     <h4 className="text-sm font-semibold text-gray-800">{comment?.userName}</h4>
                                     <p className="text-xs text-gray-500">{comment?.currentDateTime}</p>
                                 </div>

@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import { Link } from 'react-router-dom';
 
 const Slider = () => {
     return (
@@ -16,45 +17,49 @@ const Slider = () => {
                 autoplay={{ delay: 3000 }}
                 loop={true}
             >
+                {/* slider 1 */}
                 <SwiperSlide
                     className="h-[80vh] lg:h-[90vh] bg-center bg-cover"
-                    // style={{ backgroundImage: `url(${team1})` }}>
-                    style={{ backgroundImage: `url(https://www.cloudways.com/blog/wp-content/uploads/Product-Recommendation.jpg)` }}>
+                    style={{ backgroundImage: `url("https://d61s2hjse0ytn.cloudfront.net/images/web/slider/honor-200-slider.webp")` }}>
                     <div className="max-w-md pl-10 py-64 text-left text-white">
                         <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
                         <p className="mb-5">
                             Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
                             quasi. In deleniti eaque aut repudiandae et a id nisi.
                         </p>
-                        <button className="btn btn-primary">Explore our Product</button>
+                        <Link to='/queries'>
+                            <button className="btn btn-primary">Explore our Product Queries</button>
+                        </Link>
                     </div>
                 </SwiperSlide>
-
+                {/* slider 2 */}
                 <SwiperSlide
                     className="h-[80vh] lg:h-[90vh] bg-center bg-cover"
-                    // style={{ backgroundImage: `url(${team2})` }}>
-                    style={{ backgroundImage: `url(https://www.cloudways.com/blog/wp-content/uploads/Product-Recommendation.jpg)` }}>
+                    style={{ backgroundImage: `url(https://d61s2hjse0ytn.cloudfront.net/images/web/slider/iPhone_16_Pro_and_iPhone_16_Pro_Max.webp)` }}>
                     <div className="max-w-md pl-10 py-64 text-left text-white">
                         <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
                         <p className="mb-5">
                             Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
                             quasi. In deleniti eaque aut repudiandae et a id nisi.
                         </p>
-                        <button className="btn btn-primary">Explore our Product</button>
+                        <Link to='/queries'>
+                            <button className="btn btn-primary">Explore our Product Queries</button>
+                        </Link>
                     </div>
                 </SwiperSlide>
-
+                {/* slider 3 */}
                 <SwiperSlide
                     className="h-[80vh] lg:h-[90vh] bg-center bg-cover"
-                    // style={{ backgroundImage: `url(${team3})` }}>
-                    style={{ backgroundImage: `url(https://www.cloudways.com/blog/wp-content/uploads/Product-Recommendation.jpg)` }}>
+                    style={{ backgroundImage: `url(https://d61s2hjse0ytn.cloudfront.net/images/web/slider/Acer_Nitro_V15.webp)` }}>
                     <div className="max-w-md pl-10 py-64 text-left text-white">
                         <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
                         <p className="mb-5">
                             Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
                             quasi. In deleniti eaque aut repudiandae et a id nisi.
                         </p>
-                        <button className="btn btn-primary">Explore our Product</button>
+                        <Link to='/queries'>
+                            <button className="btn btn-primary">Explore our Product Queries</button>
+                        </Link>
                     </div>
                 </SwiperSlide>
 

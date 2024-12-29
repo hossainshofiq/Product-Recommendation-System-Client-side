@@ -3,23 +3,26 @@ import AddQueryBanner from './AddQueryBanner';
 import useAuthHook from '../../Hooks/useAuthHook';
 import { Link } from 'react-router-dom';
 import MyQueryCard from './MyQueryCard';
+import axios from 'axios';
 
 const MyQueries = () => {
-    const [queries, setQueries] = useState([]);
+
     const { user } = useAuthHook();
+    const [queries, setQueries] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/queries?email=${user.email}`)
-            .then((res) => res.json())
-            .then((data) => setQueries(data))
-            .catch((err) => console.error('Error fetching queries:', err));
+        // cookie send to server
+        axios.get(`http://localhost:5000/myQueries?email=${user.email}`, {withCredentials: true})
+            .then(res => {
+                setQueries(res.data);
+            })
     }, [user.email]);
 
     return (
         <div className="flex flex-col text-center">
             <AddQueryBanner></AddQueryBanner>
-            <div className="flex-grow flex flex-col items-center">
-                <h1 className="font-bold text-5xl my-5">My Queries: {queries.length}</h1>
+            <div className="flex-grow flex flex-col items-center mx-5">
+                <h1 className="font-bold text-5xl my-10">My Queries: {queries.length}</h1>
                 {
                     queries.length > 0 ? (
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 w-full max-w-7xl mx-auto">

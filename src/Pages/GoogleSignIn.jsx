@@ -14,6 +14,15 @@ const GoogleSignIn = () => {
             .then(result => {
                 console.log(result.user);
                 navigate(location?.state || '/');
+                
+                // token creation failed
+                // const user = { email: email };
+                // axios.post('http://localhost:5000/jwt')
+                //     .then(res => {
+                //         console.log(res.data);
+                //     })
+                //
+                
             })
             .catch(error => {
                 console.log(error.message);

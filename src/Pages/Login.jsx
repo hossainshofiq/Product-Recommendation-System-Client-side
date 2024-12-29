@@ -5,6 +5,7 @@ import Lottie from 'lottie-react';
 import GoogleSignIn from './GoogleSignIn';
 import useAuthHook from '../Hooks/useAuthHook';
 import Swal from 'sweetalert2';
+import axios from 'axios';
 
 const Login = () => {
 
@@ -21,7 +22,13 @@ const Login = () => {
 
         signInUser(email, password)
             .then(result => {
-                // console.log('Signin done:', result.user);
+                console.log('Login:', result.user.email);
+                // token created successfully
+                const user = { email: email };
+                axios.post('http://localhost:5000/jwt', user, {withCredentials: true})
+                    .then(res => {
+                        console.log(res.data);
+                    })
                 Swal.fire({
                     position: "center",
                     icon: "success",

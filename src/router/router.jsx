@@ -11,9 +11,11 @@ import MyRecommendations from '../Pages/MyRecommendations';
 import PrivateRoute from './PrivateRoute';
 import MyQueries from '../Pages/MyQueries/MyQueries';
 import AddQueryForm from '../Pages/MyQueries/AddQueryForm';
-import MyQueryDetails from '../Pages/MyQueryDetails';
+import MyQueryDetails from '../Pages/MyQueries/MyQueryDetails';
 import MyQueryUpdate from './../Pages/MyQueries/MyQueryUpdate';
 import RecommendationForm from '../Pages/RecommendationForm';
+import RecentQueries from './../Pages/Home/RecentQueries';
+
 
 const router = createBrowserRouter([
     {
@@ -33,15 +35,14 @@ const router = createBrowserRouter([
                 element: <Register></Register>
             },
             {
+                path: '/recentQueries',
+                element: <RecentQueries></RecentQueries>,
+                loader: () => fetch('http://localhost:5000/recentQueries'),
+            },
+            {
                 path: '/queries',
                 element: <Queries></Queries>,
                 loader: () => fetch('http://localhost:5000/queries'),
-            },
-            {
-                path: '/recommendationsForMe',
-                element: <PrivateRoute>
-                    <RecommendationsForMe></RecommendationsForMe>
-                </PrivateRoute>
             },
             {
                 path: '/myQueries',
@@ -77,11 +78,16 @@ const router = createBrowserRouter([
                 loader: ({ params }) => fetch(`http://localhost:5000/queries/${params.id}`)
             },
             {
+                path: '/recommendationsForMe',
+                element: <PrivateRoute>
+                    <RecommendationsForMe></RecommendationsForMe>
+                </PrivateRoute>
+            },
+            {
                 path: '/myRecommendations',
                 element: <PrivateRoute>
                     <MyRecommendations></MyRecommendations>
                 </PrivateRoute>,
-                // loader: ({ params }) => fetch(`http://localhost:5000/recommendations/${params.id}`)
             },
         ]
     },
