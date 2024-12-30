@@ -22,12 +22,12 @@ const Login = () => {
 
         signInUser(email, password)
             .then(result => {
-                console.log('Login:', result.user.email);
+                // console.log('Login:', result.user.email);
                 // token created successfully
                 const user = { email: email };
                 axios.post('http://localhost:5000/jwt', user, {withCredentials: true})
                     .then(res => {
-                        console.log(res.data);
+                        // console.log(res.data);
                     })
                 Swal.fire({
                     position: "center",
@@ -39,7 +39,7 @@ const Login = () => {
                 navigate(location?.state || '/');
             })
             .catch(error => {
-                console.log(error.message);
+                // console.log(error.message);
                 Swal.fire({
                     icon: 'error',
                     title: 'Login Failed',

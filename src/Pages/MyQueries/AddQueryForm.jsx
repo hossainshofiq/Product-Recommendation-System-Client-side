@@ -8,7 +8,7 @@ import { FaArrowLeft } from 'react-icons/fa';
 const AddQueryForm = () => {
 
     const { user } = useAuthHook();
-    console.log(user.photoURL);
+    // console.log(user.photoURL);
     const navigate = useNavigate();
 
     const handleAddQuery = (e) => {
@@ -23,21 +23,22 @@ const AddQueryForm = () => {
             userEmail: user.email,
             userName: user.displayName,
             userProfileImage: user.photoURL,
-            currentDateTime: formatDate(new Date()),
+            currentDateTime: new Date().toISOString(),
+            // currentDateTime: formatDate(new Date()),
             recommendationCount: 0,
         };
 
-        function formatDate(date) {
-            const options = {
-                day: '2-digit',
-                month: '2-digit',
-                year: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit',
-                hour12: true
-            };
-            return new Intl.DateTimeFormat('en-GB', options).format(date);
-        }
+        // function formatDate(date) {
+        //     const options = {
+        //         day: '2-digit',
+        //         month: '2-digit',
+        //         year: 'numeric',
+        //         hour: '2-digit',
+        //         minute: '2-digit',
+        //         hour12: true
+        //     };
+        //     return new Intl.DateTimeFormat('en-GB', options).format(date);
+        // }
 
 
         axios.post('http://localhost:5000/queries', queryData)
@@ -114,7 +115,7 @@ const AddQueryForm = () => {
                         </div>
 
                         {/* Query Title */}
-                        <div className="form-control">
+                        {/* <div className="form-control">
                             <label className="label">
                                 <span className="label-text font-semibold text-gray-700">Query Title</span>
                             </label>
@@ -129,10 +130,24 @@ const AddQueryForm = () => {
                                 <option>Which product provides the best value for money?</option>
                                 <option>What are the best alternatives in the same price range?</option>
                             </select>
+                        </div> */}
+
+                        {/* Query Title */}
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text font-semibold text-gray-700">Query Title</span>
+                            </label>
+                            <input
+                                name="queryTitle"
+                                type="text"
+                                placeholder="Pick your query title"
+                                className="input input-bordered rounded-sm text-sm w-full bg-gray-50 focus:ring focus:ring-indigo-200"
+                                required
+                            />
                         </div>
 
                         {/* Boycotting Reason */}
-                        <div className="form-control">
+                        {/* <div className="form-control">
                             <label className="label">
                                 <span className="label-text font-semibold text-gray-700">Boycotting Reason</span>
                             </label>
@@ -141,6 +156,20 @@ const AddQueryForm = () => {
                                 placeholder="Describe the reason for boycott"
                                 className="textarea textarea-bordered rounded-sm text-sm w-full bg-gray-50 focus:ring focus:ring-indigo-200"
                             ></textarea>
+                        </div> */}
+
+                        {/* Boycotting Reason */}
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text font-semibold text-gray-700">Boycotting Reason</span>
+                            </label>
+                            <input
+                                name="boycottingReasonDetails"
+                                type="text"
+                                placeholder="Reason why you don't want this product"
+                                className="input input-bordered rounded-sm text-sm w-full bg-gray-50 focus:ring focus:ring-indigo-200"
+                                required
+                            />
                         </div>
 
                         {/* User Email */}

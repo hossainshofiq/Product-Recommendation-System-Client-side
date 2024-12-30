@@ -1,9 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import useAuthHook from '../Hooks/useAuthHook';
-import { FaEdit } from 'react-icons/fa';
 import { MdDeleteForever } from 'react-icons/md';
-import { useLoaderData } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const MyRecommendations = () => {
@@ -11,19 +9,23 @@ const MyRecommendations = () => {
     // const recommended = useLoaderData();
     const { user } = useAuthHook();
     const [recommendation, setRecommendation] = useState([]);
+    const [reFetch, setReFetch] = useState(1);
 
     useEffect(() => {
         // cookie send to server
-        axios.get(`http://localhost:5000/myRecommendations?email=${user?.email}`, {withCredentials: true})
+        axios.get(`http://localhost:5000/myRecommendations?email=${user?.email}`, { withCredentials: true })
             .then(res => {
                 setRecommendation(res.data);
             })
-    }, [user.email])
+    }, [user.email, reFetch])
 
-    console.log(recommendation);
+    // console.log(recommendation);
+    // console.log (recommendation?.queryId)
+    // console.log (reFetch);
 
-    const handleDeleteRecommendation = (_id) => {
-        console.log(_id);
+    const handleDeleteRecommendation = (_id, queryId) => {
+
+        // console.log(_id, queryId);
 
         Swal.fire({
             title: "Are you sure?",
@@ -40,8 +42,13 @@ const MyRecommendations = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data);
+                        // console.log(data);
                         if (data.deletedCount > 0) {
+                            axios.put(`http://localhost:5000/decrementByDelete?id=${queryId}`)
+                                .then(res => {
+                                    // console.log(res.data, "deleted count")
+                                })
+                            setReFetch(reFetch + 1);
                             Swal.fire({
                                 title: "Deleted!",
                                 text: "Your Recommendation has been deleted.",
@@ -80,14 +87,14 @@ const MyRecommendations = () => {
                                                 <div className="avatar">
                                                     <div className="mask mask-squircle h-12 w-12">
                                                         <img
-                                                            src={user?.photoURL}
+                                                            src={recommend?.recommendationProductImage}
                                                             alt="User Avatar"
                                                         />
                                                     </div>
                                                 </div>
                                                 <div>
-                                                    <div className="font-bold text-gray-800">{user?.displayName}</div>
-                                                    <div className="text-sm text-gray-500">{user?.email}</div>
+                                                    <div className="font-bold text-gray-800">{recommend?.recommenderName}</div>
+                                                    <div className="text-sm text-gray-500">{recommend?.recommenderEmail}</div>
                                                 </div>
                                             </div>
                                         </td>
@@ -99,7 +106,7 @@ const MyRecommendations = () => {
                                         </td>
                                         <td className="px-4 py-3 text-gray-600">{recommend.recommendationReason}</td>
                                         <td className="flex gap-2 px-4 py-3">
-                                            <button onClick={() => handleDeleteRecommendation(recommend._id)} className="flex items-center gap-2 px-4 py-2 text-white bg-red-500 hover:bg-red-600 rounded-md">
+                                            <button onClick={() => handleDeleteRecommendation(recommend._id, recommend.queryId)} className="flex items-center gap-2 px-4 py-2 text-white bg-red-500 hover:bg-red-600 rounded-md">
                                                 <MdDeleteForever />
                                                 <span>Delete</span>
                                             </button>

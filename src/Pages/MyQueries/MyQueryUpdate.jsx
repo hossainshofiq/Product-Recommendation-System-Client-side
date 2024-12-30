@@ -18,11 +18,11 @@ const MyQueryUpdate = () => {
 
         const formData = new FormData(e.target);
         const updatedQuery = Object.fromEntries(formData.entries());
-        console.log(updatedQuery);
+        // console.log(updatedQuery);
 
         axios.put(`http://localhost:5000/queries/${_id}`, updatedQuery)
             .then(res => {
-                console.log(res.data);
+                // console.log(res.data);
                 if (res.data.modifiedCount) {
                     Swal.fire({
                         title: 'Success!',
@@ -44,26 +44,33 @@ const MyQueryUpdate = () => {
 
                 <div className="card bg-base-100 w-full shrink-0 rounded-md border">
                     <form onSubmit={handleUpdateQuery} className="card-body">
+                        {/* Product Name */}
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Product Name</span>
                             </label>
                             <input defaultValue={productName} name='productName' type="text" placeholder="enter product name" className="input input-bordered rounded-sm text-sm" required />
                         </div>
+
+                        {/* Product Brand */}
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Product Brand</span>
                             </label>
                             <input defaultValue={productBrand} name='productBrand' type="text" placeholder="enter product brand" className="input input-bordered rounded-sm text-sm" required />
                         </div>
+
+                        {/* Product Image-URL */}
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Product Image-URL</span>
                             </label>
                             <input defaultValue={productImageUrl} name='productImageUrl' type="url" placeholder="enter photo image url" className="input input-bordered rounded-sm text-sm" required />
                         </div>
+
+                        {/* Query Title */}
                         <div className='md:flex lg:flex gap-5 items-center'>
-                            <div className="form-control w-full">
+                            {/* <div className="form-control w-full">
                                 <label className="label">
                                     <span className="label-text">Query Title</span>
                                 </label>
@@ -74,8 +81,17 @@ const MyQueryUpdate = () => {
                                     <option>Which product provides the best value for money?</option>
                                     <option>What are the best alternatives in the same price range?</option>
                                 </select>
-                            </div>
+                            </div> */}
+
                             <div className="form-control w-full">
+                                <label className="label">
+                                    <span className="label-text">Query Title</span>
+                                </label>
+                                <input defaultValue={queryTitle} name='queryTitle' type="text" placeholder="enter your query title" className="input input-bordered rounded-sm text-sm" required />
+                            </div>
+
+                            {/* Boycotting Reason */}
+                            {/* <div className="form-control w-full">
                                 <label className="label">
                                     <span className="label-text">Boycotting Reason</span>
                                 </label>
@@ -84,6 +100,13 @@ const MyQueryUpdate = () => {
                                     name='boycottingReasonDetails'
                                     placeholder="describe the reason of boycott"
                                     className="textarea textarea-bordered textarea-xs rounded-sm text-sm w-full "></textarea>
+                            </div> */}
+
+                            <div className="form-control w-full">
+                                <label className="label">
+                                    <span className="label-text">Boycotting Reason</span>
+                                </label>
+                                <input defaultValue={boycottingReasonDetails} name='boycottingReasonDetails' type="text" placeholder="Describe the reason of boycott" className="input input-bordered rounded-sm text-sm" required />
                             </div>
                         </div>
 

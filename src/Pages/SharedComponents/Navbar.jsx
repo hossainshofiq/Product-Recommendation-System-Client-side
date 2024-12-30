@@ -13,7 +13,7 @@ const Navbar = () => {
                 // console.log('Sign out');
             })
             .catch(error => {
-                console.log(error.message);
+                // console.log(error.message);
             })
     }
 

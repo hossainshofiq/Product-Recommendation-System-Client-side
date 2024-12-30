@@ -2,6 +2,7 @@ import React from 'react';
 import useAuthHook from '../Hooks/useAuthHook';
 import { FaGoogle } from 'react-icons/fa';
 import { useLocation, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const GoogleSignIn = () => {
 
@@ -12,20 +13,23 @@ const GoogleSignIn = () => {
     const handleGoogleSignIn = () => {
         googleSignIn()
             .then(result => {
-                console.log(result.user);
+                // console.log(result.user);
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Login Successful",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
                 navigate(location?.state || '/');
-                
-                // token creation failed
-                // const user = { email: email };
-                // axios.post('http://localhost:5000/jwt')
-                //     .then(res => {
-                //         console.log(res.data);
-                //     })
-                //
-                
             })
             .catch(error => {
-                console.log(error.message);
+                // console.log(error.message);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Login Failed',
+                    text: error.message,
+                });
             })
     }
     return (

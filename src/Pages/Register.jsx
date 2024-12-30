@@ -11,7 +11,7 @@ const Register = () => {
     const { createUser, setUser, updateUserProfile } = useAuthHook();
     const navigate = useNavigate();
     const location = useLocation();
-    console.log(location);
+    // console.log(location);
 
     const handleRegister = (e) => {
         e.preventDefault();
@@ -43,17 +43,9 @@ const Register = () => {
 
         createUser(email, password)
             .then(result => {
-                // console.log(result.user);
                 const user = result.user;
                 setUser(user);
 
-                // token created successfully
-                // axios.post('http://localhost:5000/jwt')
-                //     .then(res => {
-                //         console.log(res.data);
-                //     })
-                //
-                
                 navigate(location?.state || '/');
 
                 const newUser = { name, email };
@@ -96,7 +88,7 @@ const Register = () => {
                 navigate('/');
             })
             .catch(error => {
-                console.log(error.message);
+                // console.log(error.message);
                 Swal.fire({
                     icon: 'error',
                     title: 'Registration Failed',

@@ -30,7 +30,9 @@ const MyQueryDetails = () => {
 
                 <div className="card-body flex-1">
                     <h2 className="card-title text-2xl font-bold">{query?.productName}</h2>
-                    <p className="text-gray-500">Brand: {query?.productBrand}</p>
+                    <p className="mt-2 text-gray-700">
+                        <span className="font-semibold">Brand:</span> {query?.productBrand}
+                    </p>
                     <p className="mt-2 text-gray-700">
                         <span className="font-semibold">Query:</span> {query?.queryTitle}
                     </p>

@@ -46,7 +46,7 @@ const RecommendationsForMe = () => {
                                                     <div className="mask mask-squircle h-12 w-12">
                                                         <img
                                                             src={recommend?.recommendationProductImage}
-                                                            alt="User Avatar"
+                                                            alt="Queries"
                                                         />
                                                     </div>
                                                 </div>

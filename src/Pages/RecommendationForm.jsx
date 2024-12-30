@@ -9,13 +9,14 @@ const RecommendationForm = () => {
     const { user } = useAuthHook();
     const queryData = useLoaderData();
     const [comments, setComments] = useState([]);
+    const [reFetch, setReFetch] = useState(1);
 
     useEffect(() => {
         axios.get(`http://localhost:5000/recommendations/${queryData._id}`)
             .then((res) => {
                 setComments(res.data);
             });
-    }, []);
+    }, [reFetch]);
 
     const formatDate = (date) => {
         const options = { day: "2-digit", month: "2-digit", year: "numeric" };
@@ -42,7 +43,7 @@ const RecommendationForm = () => {
             recommendationReason: addRecommendation.recommendationReason,
         };
 
-        console.log(recommendFormDoc);
+        // console.log(recommendFormDoc);
 
         fetch("http://localhost:5000/recommendations", {
             method: "POST",
@@ -57,6 +58,7 @@ const RecommendationForm = () => {
                         axios.put(`http://localhost:5000/incrementCount/${queryData._id}`)
                             .then((res) => {
                                 if (res.data.modifiedCount) {
+                                    setReFetch(reFetch+1);
                                     Swal.fire({
                                         position: "center",
                                         icon: "success",
