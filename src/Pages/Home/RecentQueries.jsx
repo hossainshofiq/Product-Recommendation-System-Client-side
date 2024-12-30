@@ -7,7 +7,7 @@ const RecentQueries = () => {
     const [recentQueries, setRecentQueries] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:5000/recentQueries')
+        axios.get('https://product-recommendation-system-server-zeta.vercel.app/recentQueries')
             .then(res => {
                 setRecentQueries(res.data);
             })

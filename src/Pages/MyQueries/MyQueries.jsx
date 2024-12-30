@@ -12,7 +12,7 @@ const MyQueries = () => {
 
     useEffect(() => {
         // cookie send to server
-        axios.get(`http://localhost:5000/myQueries?email=${user.email}`, {withCredentials: true})
+        axios.get(`https://product-recommendation-system-server-zeta.vercel.app/myQueries?email=${user.email}`, {withCredentials: true})
             .then(res => {
                 setQueries(res.data);
             })

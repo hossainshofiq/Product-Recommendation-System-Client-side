@@ -20,7 +20,7 @@ const MyQueryUpdate = () => {
         const updatedQuery = Object.fromEntries(formData.entries());
         // console.log(updatedQuery);
 
-        axios.put(`http://localhost:5000/queries/${_id}`, updatedQuery)
+        axios.put(`https://product-recommendation-system-server-zeta.vercel.app/queries/${_id}`, updatedQuery)
             .then(res => {
                 // console.log(res.data);
                 if (res.data.modifiedCount) {

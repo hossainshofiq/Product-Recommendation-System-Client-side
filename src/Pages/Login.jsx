@@ -25,7 +25,7 @@ const Login = () => {
                 // console.log('Login:', result.user.email);
                 // token created successfully
                 const user = { email: email };
-                axios.post('http://localhost:5000/jwt', user, {withCredentials: true})
+                axios.post('https://product-recommendation-system-server-zeta.vercel.app/jwt', user, {withCredentials: true})
                     .then(res => {
                         // console.log(res.data);
                     })

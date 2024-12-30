@@ -13,7 +13,7 @@ const MyRecommendations = () => {
 
     useEffect(() => {
         // cookie send to server
-        axios.get(`http://localhost:5000/myRecommendations?email=${user?.email}`, { withCredentials: true })
+        axios.get(`https://product-recommendation-system-server-zeta.vercel.app/myRecommendations?email=${user?.email}`, { withCredentials: true })
             .then(res => {
                 setRecommendation(res.data);
             })
@@ -37,14 +37,14 @@ const MyRecommendations = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/recommendations/${_id}`, {
+                fetch(`https://product-recommendation-system-server-zeta.vercel.app/recommendations/${_id}`, {
                     method: 'DELETE',
                 })
                     .then(res => res.json())
                     .then(data => {
                         // console.log(data);
                         if (data.deletedCount > 0) {
-                            axios.put(`http://localhost:5000/decrementByDelete?id=${queryId}`)
+                            axios.put(`https://product-recommendation-system-server-zeta.vercel.app/decrementByDelete?id=${queryId}`)
                                 .then(res => {
                                     // console.log(res.data, "deleted count")
                                 })

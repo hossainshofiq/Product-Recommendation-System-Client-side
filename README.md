@@ -4,8 +4,9 @@
 The Product Recommendation System is a platform designed to help users find alternative products through queries and recommendations. Users can post queries, recommend products, and interact with the recommendations provided by others.
 
 ## **Live URL**
-[Visit the Live Site](#)  
-(*Replace with the actual deployment URL*)
+[https://product-recommendation-s-d6b6d.web.app/](https://product-recommendation-s-d6b6d.web.app/)
+[https://product-recommendation-s-d6b6d.firebaseapp.com/]
+
 
 ## **Key Features**
 1. **Authentication**

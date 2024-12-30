@@ -12,7 +12,7 @@ const RecommendationForm = () => {
     const [reFetch, setReFetch] = useState(1);
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/recommendations/${queryData._id}`)
+        axios.get(`https://product-recommendation-system-server-zeta.vercel.app/recommendations/${queryData._id}`)
             .then((res) => {
                 setComments(res.data);
             });
@@ -45,7 +45,7 @@ const RecommendationForm = () => {
 
         // console.log(recommendFormDoc);
 
-        fetch("http://localhost:5000/recommendations", {
+        fetch("https://product-recommendation-system-server-zeta.vercel.app/recommendations", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -55,7 +55,7 @@ const RecommendationForm = () => {
             .then((res) => res.json()
                 .then((data) => {
                     if (data.insertedId) {
-                        axios.put(`http://localhost:5000/incrementCount/${queryData._id}`)
+                        axios.put(`https://product-recommendation-system-server-zeta.vercel.app/incrementCount/${queryData._id}`)
                             .then((res) => {
                                 if (res.data.modifiedCount) {
                                     setReFetch(reFetch+1);
