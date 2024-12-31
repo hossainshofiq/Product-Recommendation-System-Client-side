@@ -26,7 +26,7 @@ const Queries = () => {
     return (
         <div className='max-w-7xl mx-auto my-10 px-4'>
             <div className='flex flex-wrap justify-between gap-4'>
-                <h1 className='font-bold text-center text-3xl md:text-5xl'>All Queries: {queries?.length}</h1>
+                <h1 className='font-bold text-center text-3xl md:text-5xl'>All Queries</h1>
                 <div className="flex flex-col flex-wrap gap-4">
                     <label className="input input-bordered flex items-center gap-2 w-full md:w-auto">
                         <FaSearch></FaSearch>
