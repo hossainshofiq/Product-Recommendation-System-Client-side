@@ -3,7 +3,8 @@ import Swal from 'sweetalert2';
 
 const ContactUs = () => {
 
-    const handleSendMessage = () => {
+    const handleSendMessage = (e) => {
+        e.preventdefault();
         Swal.fire({
             icon: 'success',
             title: 'Message Sent',
