@@ -91,11 +91,11 @@ const router = createBrowserRouter([
             },
         ]
     },
-    // {
-    //     path: '*',
-    //     // element: <h1>Error Page</h1>
-    //     element: <ErrorPage></ErrorPage>
-    // }
+    {
+        path: '*',
+        // element: <h1>Error Page</h1>
+        element: <ErrorPage></ErrorPage>
+    }
 ])
 
 export default router;

@@ -4,8 +4,7 @@
 The Product Recommendation System is a platform designed to help users find alternative products through queries and recommendations. Users can post queries, recommend products, and interact with the recommendations provided by others.
 
 ## **Live URL**
-[https://product-recommendation-s-d6b6d.web.app/](https://product-recommendation-s-d6b6d.web.app/)
-[https://product-recommendation-s-d6b6d.firebaseapp.com/]
+[https://product-recommendation-s-d6b6d.web.app/]
 
 
 ## **Key Features**
@@ -35,7 +34,6 @@ The Product Recommendation System is a platform designed to help users find alte
   - `react-icons` - Icon library.
   - `axios` - HTTP requests to the server.
   - `react-lottie` - For animation sections.
-  - `react-awesome-reveal` - Animations for UI elements.
   - `react-tooltip` - Tooltip functionalities.
 
 - **Backend**
@@ -44,15 +42,6 @@ The Product Recommendation System is a platform designed to help users find alte
   - `dotenv` - Environment variable management.
   - `jsonwebtoken` - JWT token creation and validation.
   - `cors` - Enable CORS policies.
-
-## **Setup Instructions**
-1. **Clone the Repositories**  
-   - Client: [Client Repository](#) (*Replace with the actual URL*)  
-   - Server: [Server Repository](#) (*Replace with the actual URL*)  
-
-5. **Deploy**
-   - Deploy the client to platforms like Netlify or Vercel.
-   - Deploy the server to platforms like Render or Heroku.
 
 ## **Design Inspiration**
 - [Themeforest Templates](https://themeforest.net/search/questions%20and%20answers%20template)

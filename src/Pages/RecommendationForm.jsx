@@ -58,7 +58,7 @@ const RecommendationForm = () => {
                         axios.put(`https://product-recommendation-system-server-zeta.vercel.app/incrementCount/${queryData._id}`)
                             .then((res) => {
                                 if (res.data.modifiedCount) {
-                                    setReFetch(reFetch+1);
+                                    setReFetch(reFetch + 1);
                                     Swal.fire({
                                         position: "center",
                                         icon: "success",
@@ -111,8 +111,8 @@ const RecommendationForm = () => {
                 </div>
             </div>
 
+            {/* Recommendation Form */}
             <div className="lg:grid grid-cols-12 gap-5">
-                {/* Recommendation Form */}
                 <div className="lg:col-span-8">
                     {/* <div className="flex justify-between items-center mb-6"> */}
                     <h1 className="text-xl lg:text-3xl font-semibold text-gray-800 mb-5">Add Recommendation: <span className="text-primary">{queryData.productName}</span> </h1>
@@ -155,10 +155,11 @@ const RecommendationForm = () => {
                             </div>
                             <div className="form-control">
                                 <label className="label font-medium">Recommendation Reason</label>
-                                <textarea
+                                <input
                                     name="recommendationReason"
+                                    type="text"
                                     placeholder="Why do you recommend this product?"
-                                    className="textarea textarea-bordered rounded-sm w-full"
+                                    className="input input-bordered rounded-sm w-full"
                                     required
                                 />
                             </div>
@@ -171,7 +172,7 @@ const RecommendationForm = () => {
 
                 {/* Comments Section */}
                 <div className="space-y-4 border rounded-md p-3 col-span-4 mb-5">
-                    <h2 className="text-lg lg:text-xl font-semibold text-gray-800">Users Recommendations: {comments.length}</h2>
+                    <h2 className="text-lg lg:text-xl font-semibold text-gray-800">All Recommendations:({comments.length})</h2>
                     <div className="divider"></div>
                     {comments.map((comment) => (
                         <div
@@ -185,8 +186,8 @@ const RecommendationForm = () => {
                                     className="w-20 h-20 object-cover rounded-full border"
                                 />
                                 <div>
-                                    <p className="text-gray-600">Reason: "{comment?.recommendationReason}"</p>
-                                    <p className="text-gray-600">Product Name: "{comment?.recommendationProductName}" </p>
+                                    <p className="text-gray-600">Reason: <span className="italic">"{comment?.recommendationReason}"</span> </p>
+                                    <p className="text-gray-600">Product Name: <span className="italic">"{comment?.recommendationProductName}"</span> </p>
                                     <p className="text-sm font-semibold text-gray-800">{comment?.userEmail} </p>
                                     <h4 className="text-sm font-semibold text-gray-800">{comment?.userName}</h4>
                                     <p className="text-xs text-gray-500">{comment?.currentDateTime}</p>

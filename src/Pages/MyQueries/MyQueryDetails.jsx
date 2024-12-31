@@ -52,6 +52,10 @@ const MyQueryDetails = () => {
                         <p className="font-semibold">{query?.userName}</p>
                         <p className="text-sm text-gray-500">{query?.userEmail}</p>
                     </div>
+
+                    <h4 className='font-medium text-sm md:text-base text-gray-500'>
+                        Recommendation Count: {query?.recommendationCount}
+                    </h4>
                 </div>
             </div>
         </div>

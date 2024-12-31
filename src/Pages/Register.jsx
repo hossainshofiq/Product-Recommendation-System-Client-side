@@ -48,24 +48,24 @@ const Register = () => {
 
                 navigate(location?.state || '/');
 
-                const newUser = { name, email };
-                fetch('https://product-recommendation-system-server-zeta.vercel.app/users', {
-                    method: 'POST',
-                    headers: {
-                        'content-type': 'application/json'
-                    },
-                    body: JSON.stringify(newUser)
-                })
-                    .then(res => res.json())
-                    .then(data => {
-                        // console.log("User created to db", data);
-                    })
-
-                // axios.post('https://product-recommendation-system-server-zeta.vercel.app/users', newUser)
-                // .then(res => {
-                //     console.log("User created to db", res.data);
-                //     setUser(res.data)
+                // const newUser = { name, email };
+                // fetch('https://product-recommendation-system-server-zeta.vercel.app/users', {
+                //     method: 'POST',
+                //     headers: {
+                //         'content-type': 'application/json'
+                //     },
+                //     body: JSON.stringify(newUser)
                 // })
+                //     .then(res => res.json())
+                //     .then(data => {
+                //         // console.log("User created to db", data);
+                //     })
+
+                const newUser = { name, email };
+                axios.post('https://product-recommendation-system-server-zeta.vercel.app/users', newUser)
+                .then(res => {
+                    // console.log("User created to db", res.data);
+                })
 
                 updateUserProfile(userDoc)
                     .then(() => {

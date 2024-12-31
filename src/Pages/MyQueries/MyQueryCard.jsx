@@ -41,13 +41,14 @@ const MyQueryCard = ({ query, queries, setQueries }) => {
                 <img
                     src={query.productImageUrl}
                     alt={query.productName}
-                    className="rounded-xl"
+                    className="rounded-xl w-52 h-40 object-contain"
                 />
             </figure>
             <div className="card-body text-center p-5">
                 <h2 className="text-2xl font-bold text-gray-800">{query.productName}</h2>
-                <h3 className="text-lg font-semibold text-gray-500">{query.productBrand}</h3>
-                <p className="text-gray-600 my-3">{query.queryTitle}</p>
+                <h3 className="text-lg font-semibold text-gray-900">Brand: <span className='text-lg font-semibold text-gray-500'>{query.productBrand}</span></h3>
+                <p className="text-gray-900 font-semibold my-3">Query Title: <span className='text-gray-600 '>{query.queryTitle}</span></p>
+                <p className="text-gray-900 font-semibold my-3">Boycott Reason: <span className='text-gray-600 '>{query.boycottingReasonDetails}</span></p>
                 <div className="card-actions flex justify-center space-x-3 mt-4 font-semibold">
                     <Link to={`/myQueries/queryDetails/${_id}`}>
                         <button className="px-4 py-2  bg-blue-500 text-white rounded-md shadow hover:bg-blue-600">

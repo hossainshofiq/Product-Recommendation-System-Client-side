@@ -6,7 +6,7 @@ const QueriesCard = ({ query }) => {
         <div key={query._id} className="card bg-base-100 shadow-xl border p-4 md:p-6 rounded-lg">
             <figure className="flex justify-center items-center bg-gray-100 rounded-lg p-4">
                 <img
-                    className="w-40 h-40 md:w-52 md:h-52 object-cover rounded-lg"
+                    className="w-40 h-40 md:w-52 md:h-52 object-contain rounded-lg"
                     src={query?.productImageUrl}
                     alt={query?.productName}
                 />
