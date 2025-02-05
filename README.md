@@ -6,8 +6,14 @@ The Product Recommendation Platform allows users to add, manage, and view produc
 ## **Live Site URL**
 [https://product-recommendation-s-d6b6d.web.app/]
 
+## Contact Information
+
+You can reach me at the following contact number:
+
+**Phone Number:** +8801689819951
+
 ## PerfectAlt
-![PerfectAlt Screenshot](/src//assets/banner_secreenshot.jpg)
+![PerfectAlt Screenshot](/src/assets/banner_secreenshot.jpg)
 
 ## Technology Stack
 
